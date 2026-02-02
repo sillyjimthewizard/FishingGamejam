@@ -19,8 +19,7 @@ public class ClickToMove : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            agent.SetDestination(ray.origin);
         }
-
-        agent.SetDestination(ray.origin);
     }
 }
