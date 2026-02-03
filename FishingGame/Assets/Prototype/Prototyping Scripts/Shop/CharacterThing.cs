@@ -1,5 +1,9 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.WSA;
+using static UnityEditor.MaterialProperty;
 
 public class CharacterThing : MonoBehaviour
 {
@@ -12,11 +16,7 @@ public class CharacterThing : MonoBehaviour
     public RawImage CustomerBody;
     public RawImage CustomerFace;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -37,3 +37,4 @@ public class CharacterThing : MonoBehaviour
     }
 
 }
+
