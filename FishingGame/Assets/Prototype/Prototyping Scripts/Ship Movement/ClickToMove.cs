@@ -1,66 +1,82 @@
 using UnityEngine;
-using UnityEngine.AI;
+using System.Collections;
 
 public class ClickToMove : MonoBehaviour
 {
-    private Transform targetPoint;
-    private NavMeshAgent agent;
-    public LayerMask groundLayer;
+    [Header("Ship")]
+    public float speed;
+    public float turningArc;
 
-    Ray destination;
-
-
-    private void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
+    [Header("Destination")]
+    private Vector2 mousePos;
+    [SerializeField] private Transform playerPos;
+    [SerializeField] private Vector3[] point;
+    [SerializeField] private GameObject destination;
 
     private void Update()
     {
-        ClickMove();
+        FindMousePos();
     }
 
-    // left clicking finds the mouse pos relative to the players screen
-    // setting the destination to the pos it finds
-
-    Vector2 turningPoint;
-    Vector2 origin;
-    float angleToP;
-    float initialDirection;
-    private void ClickMove()
+    void FindMousePos()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+            StartCoroutine(PointSet());
+            StartCoroutine(FollowArc(playerPos, point[0], point[2], turningArc, speed));
+
+            Debug.Log(mousePos);
         }
+    }
 
-        //turningPoint = gameObject.transform.position;
-        //Vector2 r = turningPoint - origin;
+    IEnumerator PointSet()
+    {
+        point[0] = gameObject.transform.position;
+        point[2] = mousePos;
+        yield break;
+    }
 
-        //destination = new(50, -5);
+    IEnumerator FollowArc(
+        Transform mover,
+        Vector2 start,
+        Vector2 end,
+        float radius, // Set this to negative if you want to flip the arc.
+        float duration)
+    {
 
-        //angleToP = initialDirection - 90f;
-        //turningPoint.x = origin.x + r.x * Mathf.Cos(angleToP);
-        //turningPoint.y = origin.y + r.y * Mathf.Sin(angleToP);
+        Vector2 difference = end - start;
+        float span = difference.magnitude;
 
-        //float dx = destination.x - turningPoint.x;
-        //float dy = destination.y - turningPoint.y;
-        //float h = Mathf.Sqrt(dx * dx + dy * dy);
+        // Override the radius if it's too small to bridge the points.
+        float absRadius = Mathf.Abs(radius);
+        if (span > 2f * absRadius)
+            radius = absRadius = span / 2f;
 
-        //if (h < r.x || h < r.y)
-        //{
-        //    return;
-        //}
-        //else
-        //{
-        //    Vector2 d = new(dx, dy);
-        //    d = new(Mathf.Sqrt(h * h - r.x * r.x), Mathf.Sqrt(h * h - r.y * r.y));
-        //    Vector2 theta = new(Mathf.Acos(r.x / h), Mathf.Acos(r.y / h));
+        Vector2 perpendicular = new Vector2(difference.y, -difference.x) / span;
+        perpendicular *= Mathf.Sign(radius) * Mathf.Sqrt(radius * radius - span * span / 4f);
 
-        //    float phi = Mathf.Atan(dy / dx);
-        //    Vector2 Q = new(turningPoint.x + r.x * Mathf.Cos(phi + theta.x), turningPoint.y + r.y * Mathf.Sin(phi + theta.y));
+        Vector2 center = start + difference / 2f + perpendicular;
 
-        //    agent.SetDestination(Q);
+        Vector2 toStart = start - center;
+        float startAngle = Mathf.Atan2(toStart.y, toStart.x);
 
+        Vector2 toEnd = end - center;
+        float endAngle = Mathf.Atan2(toEnd.y, toEnd.x);
+
+        // Choose the smaller of two angles separating the start & end
+        float travel = (endAngle - startAngle + 5f * Mathf.PI) % (2f * Mathf.PI) - Mathf.PI;
+
+        float progress = 0f;
+        do
+        {
+            float angle = startAngle + progress * travel;
+            mover.position = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * absRadius;
+            progress += Time.deltaTime / duration;
+            yield return null;
+        } while (progress < 1f);
+
+        mover.position = end;
     }
 }
