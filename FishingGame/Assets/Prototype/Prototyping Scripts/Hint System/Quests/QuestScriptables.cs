@@ -19,6 +19,8 @@ public class QuestScriptables : ScriptableObject
     [Header("Start The Name With A Capital")]
     public string Location;
 
-   
+    [Header("Put the quest dialogue here")]
+    public string CustomerText;
+
 
 }
