@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd61b6e7bab4094db5992570b1176a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  turningArc: 3
+  duration: 2
+  turningArc: 2
   playerPos: {fileID: 1030973373}
   point:
   - {x: 0, y: 0, z: 0.00006769074}
