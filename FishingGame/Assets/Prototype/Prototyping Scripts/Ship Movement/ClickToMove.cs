@@ -25,7 +25,8 @@ public class ClickToMove : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             StartCoroutine(PointSet());
-            StartCoroutine(FollowArc(playerPos, point[0], point[2], turningArc, speed));
+            StartCoroutine(DetermineDuration());
+            StartCoroutine(FollowArc(playerPos, point[0], point[1], turningArc, speed));
 
             Debug.Log(mousePos);
         }
@@ -34,7 +35,13 @@ public class ClickToMove : MonoBehaviour
     IEnumerator PointSet()
     {
         point[0] = gameObject.transform.position;
-        point[2] = mousePos;
+        point[1] = mousePos;
+        yield break;
+    }
+
+    IEnumerator DetermineDuration()
+    {
+
         yield break;
     }
 
