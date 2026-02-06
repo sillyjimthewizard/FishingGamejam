@@ -8,32 +8,58 @@ using static UnityEditor.MaterialProperty;
 public class CharacterThing : MonoBehaviour
 {
 
-    public Texture[] TorsoImages;
-    public Texture[] HeadImages;
-    public Texture[] FaceImages;
+    public Sprite[] TorsoImages;
+    public Sprite[] HeadImages;
+    public Sprite[] FaceImages;
 
-    public RawImage CustomerHead;
-    public RawImage CustomerBody;
-    public RawImage CustomerFace;
+    public GameObject CustomerHead;
+    public GameObject CustomerBody;
+    public GameObject CustomerFace;
+
+    public SpriteRenderer HeadRenderer;
+    public SpriteRenderer FaceRenderer;
+    public SpriteRenderer BodyRenderer;
 
 
+    private void Start()
+    {
+       HeadRenderer = CustomerHead.GetComponent<SpriteRenderer>();
+       BodyRenderer = CustomerBody.GetComponent<SpriteRenderer>();
+       FaceRenderer = CustomerFace.GetComponent<SpriteRenderer>();
+
+       FaceImages = Resources.LoadAll<Sprite>("Face");
+       HeadImages = Resources.LoadAll<Sprite>("Head");
+       TorsoImages = Resources.LoadAll<Sprite>("Torso");
+
+      
+
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            CustomerHead.texture = HeadImages[Random.Range(0, HeadImages.Length)];
-            CustomerBody.texture = TorsoImages[Random.Range(0, HeadImages.Length)];
-            CustomerFace.texture = FaceImages[Random.Range(0, HeadImages.Length)];
+            HeadRenderer.sprite = HeadImages[Random.Range(0, HeadImages.Length)];
+            BodyRenderer.sprite = TorsoImages[Random.Range(0, TorsoImages.Length)];
+            FaceRenderer.sprite = FaceImages[Random.Range(0, FaceImages.Length)];
+
+            HeadRenderer.size = new Vector2(1, 1);
+            BodyRenderer.size = new Vector2(1, 1);
+            FaceRenderer.size = new Vector2(1, 1);
+
         }
     }
 
     public void RandomiseCustomer()
     {
-        CustomerHead.texture = HeadImages[Random.Range(0, HeadImages.Length)];
-        CustomerBody.texture = TorsoImages[Random.Range(0, HeadImages.Length)];
-        CustomerFace.texture = FaceImages[Random.Range(0, HeadImages.Length)];
+        HeadRenderer.sprite = HeadImages[Random.Range(0, HeadImages.Length)];
+        BodyRenderer.sprite = TorsoImages[Random.Range(0, TorsoImages.Length)];
+        FaceRenderer.sprite = FaceImages[Random.Range(0, FaceImages.Length)];
+
+        HeadRenderer.size = new Vector2(1, 1);
+        BodyRenderer.size = new Vector2(1, 1);
+        FaceRenderer.size = new Vector2(1, 1);
     }
 
 }
