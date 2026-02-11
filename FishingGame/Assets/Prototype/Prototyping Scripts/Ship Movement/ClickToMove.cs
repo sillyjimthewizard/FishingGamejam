@@ -1,15 +1,18 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ClickToMove : MonoBehaviour
 {
-    [Header("Ship")]
-    public float duration;
-    float speed = 2f;
-
+    [Header("Editables")]
+    public float speed;
     public float turningArc;
 
-    [Header("Rotate on Curve")]
+    private float duration;
+
+    [Header("Rotation")]
     Vector3 lastPosition;
     Vector3 movementDirection;
 
@@ -22,7 +25,7 @@ public class ClickToMove : MonoBehaviour
     private void Update()
     {
         FindMousePos();
-        Rotation();
+        TurnShip();
     }
 
     void FindMousePos()
@@ -32,7 +35,7 @@ public class ClickToMove : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             StartCoroutine(PointSet());
-            StartCoroutine(DetermineTime());
+            StartCoroutine(DetermineDuration());
             StartCoroutine(FollowArc(playerPos, point[0], point[1], turningArc, duration));
 
             Debug.Log(mousePos);
@@ -46,7 +49,7 @@ public class ClickToMove : MonoBehaviour
         yield break;
     }
 
-    IEnumerator DetermineTime()
+    IEnumerator DetermineDuration()
     {
         // find distance
         float distance = Vector2.Distance(point[0], point[1]);
@@ -99,12 +102,23 @@ public class ClickToMove : MonoBehaviour
         player.position = end;
     }
 
-    void Rotation()
+    void TurnShip()
     {
-        Vector3 eulers = gameObject.transform.eulerAngles;
-        gameObject.transform.eulerAngles = new Vector3(0f, 0f, eulers.z);
-        movementDirection = transform.position - lastPosition;
+        //float threshold = Single.Epsilon;
+        //float turnSpeed = 3f;
+        //float step = turnSpeed * Time.deltaTime;
+        //while (Vector3.Angle(point[0], point[1]) > threshold)
+        //{
+        //    Vector3 newDir = Vector3.RotateTowards(point[0], point[1], step, 0);
+        //    transform.rotation = Quaternion.LookRotation(newDir);
+        //    yield return null;
+        //}
 
-        transform.rotation = Quaternion.LookRotation(movementDirection);
+        float turnSpeed = 5f;
+
+        var newRotation = Quaternion.LookRotation(transform.position - point[1], Vector3.forward);
+        newRotation.x = 0f;
+        newRotation.y = 0f;
+        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * turnSpeed);
     }
 }
