@@ -1,11 +1,20 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ClickToMove : MonoBehaviour
 {
-    [Header("Ship")]
+    [Header("Editables")]
     public float speed;
     public float turningArc;
+
+    private float duration;
+
+    [Header("Rotation")]
+    Vector3 lastPosition;
+    Vector3 movementDirection;
 
     [Header("Destination")]
     private Vector2 mousePos;
@@ -16,6 +25,7 @@ public class ClickToMove : MonoBehaviour
     private void Update()
     {
         FindMousePos();
+        TurnShip();
     }
 
     void FindMousePos()
@@ -25,7 +35,8 @@ public class ClickToMove : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             StartCoroutine(PointSet());
-            StartCoroutine(FollowArc(playerPos, point[0], point[2], turningArc, speed));
+            StartCoroutine(DetermineDuration());
+            StartCoroutine(FollowArc(playerPos, point[0], point[1], turningArc, duration));
 
             Debug.Log(mousePos);
         }
@@ -33,13 +44,24 @@ public class ClickToMove : MonoBehaviour
 
     IEnumerator PointSet()
     {
-        point[0] = gameObject.transform.position;
-        point[2] = mousePos;
+        point[0] = gameObject.transform.position; // player pos
+        point[1] = mousePos; // mouse pos (destination)
+        yield break;
+    }
+
+    IEnumerator DetermineDuration()
+    {
+        // find distance
+        float distance = Vector2.Distance(point[0], point[1]);
+
+        // (formula) time equals distance over time
+        duration = distance / speed;
+
         yield break;
     }
 
     IEnumerator FollowArc(
-        Transform mover,
+        Transform player,
         Vector2 start,
         Vector2 end,
         float radius, // Set this to negative if you want to flip the arc.
@@ -72,11 +94,31 @@ public class ClickToMove : MonoBehaviour
         do
         {
             float angle = startAngle + progress * travel;
-            mover.position = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * absRadius;
+            player.position = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * absRadius;
             progress += Time.deltaTime / duration;
             yield return null;
         } while (progress < 1f);
 
-        mover.position = end;
+        player.position = end;
+    }
+
+    void TurnShip()
+    {
+        //float threshold = Single.Epsilon;
+        //float turnSpeed = 3f;
+        //float step = turnSpeed * Time.deltaTime;
+        //while (Vector3.Angle(point[0], point[1]) > threshold)
+        //{
+        //    Vector3 newDir = Vector3.RotateTowards(point[0], point[1], step, 0);
+        //    transform.rotation = Quaternion.LookRotation(newDir);
+        //    yield return null;
+        //}
+
+        float turnSpeed = 5f;
+
+        var newRotation = Quaternion.LookRotation(transform.position - point[1], Vector3.forward);
+        newRotation.x = 0f;
+        newRotation.y = 0f;
+        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * turnSpeed);
     }
 }
