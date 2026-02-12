@@ -1,16 +1,15 @@
-using NUnit.Framework.Internal;
-using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
-using UnityEngine.WSA;
-using static UnityEditor.MaterialProperty;
 
-public class CharacterThing : MonoBehaviour
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class ShopManager : MonoBehaviour
 {
 
     public Sprite[] TorsoImages;
     public Sprite[] HeadImages;
     public Sprite[] FaceImages;
+    public RawImage QuestItemCounter;
 
     public GameObject CustomerHead;
     public GameObject CustomerBody;
@@ -20,8 +19,13 @@ public class CharacterThing : MonoBehaviour
     public SpriteRenderer FaceRenderer;
     public SpriteRenderer BodyRenderer;
 
+    public static ShopManager instance;
 
-    private void Start()
+    public PlayerStats TempPlayerStats;
+    public GameObject PlayerStatsObject;
+
+
+    private void Awake()
     {
        HeadRenderer = CustomerHead.GetComponent<SpriteRenderer>();
        BodyRenderer = CustomerBody.GetComponent<SpriteRenderer>();
@@ -31,7 +35,11 @@ public class CharacterThing : MonoBehaviour
        HeadImages = Resources.LoadAll<Sprite>("Head");
        TorsoImages = Resources.LoadAll<Sprite>("Torso");
 
-      
+       instance = this;
+
+        PlayerStatsObject = GameObject.Find("PlayerStats");
+        TempPlayerStats = PlayerStatsObject.GetComponent<PlayerStats>();
+
 
     }
 
@@ -44,10 +52,16 @@ public class CharacterThing : MonoBehaviour
             BodyRenderer.sprite = TorsoImages[Random.Range(0, TorsoImages.Length)];
             FaceRenderer.sprite = FaceImages[Random.Range(0, FaceImages.Length)];
 
-            HeadRenderer.size = new Vector2(1, 1);
-            BodyRenderer.size = new Vector2(1, 1);
-            FaceRenderer.size = new Vector2(1, 1);
+        }
 
+        if (TempPlayerStats.QuestComplete == true)
+        {
+            QuestItemCounter.color = new Color(1, 1, 0);
+        }
+
+        if (TempPlayerStats.QuestComplete == false)
+        {
+            QuestItemCounter.color = new Color(1, 1, 1);
         }
     }
 
@@ -56,10 +70,20 @@ public class CharacterThing : MonoBehaviour
         HeadRenderer.sprite = HeadImages[Random.Range(0, HeadImages.Length)];
         BodyRenderer.sprite = TorsoImages[Random.Range(0, TorsoImages.Length)];
         FaceRenderer.sprite = FaceImages[Random.Range(0, FaceImages.Length)];
+        TempPlayerStats.QuestComplete = false;
 
-        HeadRenderer.size = new Vector2(1, 1);
-        BodyRenderer.size = new Vector2(1, 1);
-        FaceRenderer.size = new Vector2(1, 1);
+        //HeadRenderer.size = new Vector2(1, 1);
+        //BodyRenderer.size = new Vector2(1, 1);
+        //FaceRenderer.size = new Vector2(1, 1);
+    }
+
+ 
+
+    public void SceneSwapper()
+    {
+        SceneManager.UnloadSceneAsync("TheShop");
+        SceneManager.LoadScene("ShopScene");
+        
     }
 
 }

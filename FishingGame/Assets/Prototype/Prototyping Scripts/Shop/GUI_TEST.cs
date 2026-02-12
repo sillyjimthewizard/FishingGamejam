@@ -21,7 +21,7 @@ public class GUI_TEST : MonoBehaviour
             // Show a button to allow scene2 to be switched to.
             if (GUI.Button(new Rect(xCenter - width / 2, yCenter - height / 2, width, height), "Load second scene", fontSize))
             {
-                SceneManager.LoadScene("SceneTest");
+                SceneManager.LoadScene("TheShop");
             }
         }
         else
@@ -29,7 +29,7 @@ public class GUI_TEST : MonoBehaviour
             // Show a button to allow scene1 to be returned to.
             if (GUI.Button(new Rect(xCenter - width / 2, yCenter - height / 2, width, height), "Return to first scene", fontSize))
             {
-                SceneManager.LoadScene("ShopScene");
+                
             }
         }
     }

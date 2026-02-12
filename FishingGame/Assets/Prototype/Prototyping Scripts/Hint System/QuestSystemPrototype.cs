@@ -10,17 +10,30 @@ public class QuestSystemPrototype : MonoBehaviour
     public TMP_Text LocationText;
     public TMP_Text QuestText;
     public TMP_Text RewardText;
+    public TMP_Text CustomerDialogue;
+
+    public static QuestSystemPrototype instance;
+
+    //public bool questcomplete;
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.U))
+        instance = this;
+        
+    }
+
+    public void getquest()
+    {
+        if (ShopManager.instance.TempPlayerStats.QuestComplete == true)
         {
             CurrentQuest = Quests[Random.Range(0, Quests.Length)];
-
             LocationText.text = CurrentQuest.Location.ToString();
             QuestText.text = CurrentQuest.QuestName.ToString();
             RewardText.text = CurrentQuest.RewardAmount.ToString();
+            CustomerDialogue.text = CurrentQuest.CustomerText.ToString();
+
+            ShopManager.instance.RandomiseCustomer();
         }
     }
 }

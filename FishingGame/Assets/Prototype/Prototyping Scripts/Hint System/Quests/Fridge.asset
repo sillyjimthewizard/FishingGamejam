@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb8779c31d512a41a4af7daab619450, type: 3}
   m_Name: Fridge
   m_EditorClassIdentifier: 
-  QuestName: 231
-  RewardAmount: 231
-  ObjectWanted: 231
-  Location: 231
+  QuestName: Fridge
+  RewardAmount: 999
+  ObjectWanted: Fridge
+  Location: South London
+  CustomerText: 'Hi i want a fridge, if u get me it i wont kill you, thanks!s! '
