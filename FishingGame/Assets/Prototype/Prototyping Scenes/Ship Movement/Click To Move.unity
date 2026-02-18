@@ -150,11 +150,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   turningArc: 2
+  turnSpeed: 0
   playerPos: {fileID: 1030973373}
   point:
   - {x: 0, y: 0, z: 0.00006769074}
   - {x: 0, y: 0, z: 9.54e-43}
-  destination: {fileID: 0}
 --- !u!4 &1030973373
 Transform:
   m_ObjectHideFlags: 0
@@ -180,6 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1423977261}
+  - component: {fileID: 1423977263}
   - component: {fileID: 1423977260}
   - component: {fileID: 1423977259}
   - component: {fileID: 1423977262}
@@ -308,6 +309,21 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1423977263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423977258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b34bafae1929f4caae58c8537a0f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1030973373}
+  followSpeed: 3
+  cameraDamp: 2
 --- !u!1 &1710013398
 GameObject:
   m_ObjectHideFlags: 0
