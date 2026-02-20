@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   turningArc: 2
-  turnSpeed: 0
+  turnSpeed: 2
   playerPos: {fileID: 1030973373}
   point:
   - {x: 0, y: 0, z: 0.00006769074}
