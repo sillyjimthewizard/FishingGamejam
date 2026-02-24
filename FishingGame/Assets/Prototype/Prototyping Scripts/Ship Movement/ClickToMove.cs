@@ -10,7 +10,10 @@ public class ClickToMove : MonoBehaviour
 
     [Header("Destination")]
     [SerializeField] private Transform playerPos;
-    [SerializeField] private Vector3[] point;
+    [SerializeField] private Vector3[] points;
+
+    [Header("Side Detection")]
+    [SerializeField] private GameObject[] sidePoints;
 
     private bool travelling;
     private Vector2 mousePos;
@@ -30,7 +33,7 @@ public class ClickToMove : MonoBehaviour
 
             StartCoroutine(PointSet());
             StartCoroutine(DetermineDuration());
-            StartCoroutine(FollowArc(playerPos, point[0], point[1], turningArc, duration));
+            StartCoroutine(FollowArc(playerPos, points[0], points[1], turningArc, duration));
 
             Debug.Log("Mouse Pos: " + mousePos);
         }
@@ -38,15 +41,15 @@ public class ClickToMove : MonoBehaviour
 
     IEnumerator PointSet()
     {
-        point[0] = gameObject.transform.position; // player pos
-        point[1] = mousePos; // mouse pos (destination)
+        points[0] = gameObject.transform.position; // player pos
+        points[1] = mousePos; // mouse pos (destination)
         yield break;
     }
 
     IEnumerator DetermineDuration()
     {
         // find distance
-        float distance = Vector2.Distance(point[0], point[1]);
+        float distance = Vector2.Distance(points[0], points[1]);
 
         // (formula) time equals distance over time
         duration = distance / speed;
@@ -99,9 +102,14 @@ public class ClickToMove : MonoBehaviour
         player.position = end;
     }
 
+    void SideDetection()
+    {
+
+    }
+
     void TurnShip()
     {
-        var newRotation = Quaternion.LookRotation(transform.position - point[1], Vector3.forward);
+        var newRotation = Quaternion.LookRotation(transform.position - points[1], Vector3.forward);
         newRotation.x = transform.rotation.x;
         newRotation.y = transform.rotation.y;
         transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * turnSpeed);
