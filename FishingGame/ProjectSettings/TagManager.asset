@@ -6,6 +6,7 @@ TagManager:
   tags:
   - shop
   - Wall
+  - QuestSystem
   layers:
   - Default
   - TransparentFX

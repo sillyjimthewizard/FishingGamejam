@@ -14,7 +14,7 @@ public class ButtonTest : MonoBehaviour
         //GameObject TempObject = GameObject.Find("PlayerStats");
         //PlayerStats = TempObject.GetComponent<PlayerStats>();
 
-        PlayerStats.Instance.QuestComplete = true;
+        ShopManager.instance.TempPlayerStats.QuestComplete = true;
         Debug.Log("YEs");
     }
 }

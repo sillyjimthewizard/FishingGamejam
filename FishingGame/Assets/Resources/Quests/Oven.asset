@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb8779c31d512a41a4af7daab619450, type: 3}
   m_Name: Oven
   m_EditorClassIdentifier: 
-  QuestName: awdasd
-  RewardAmount: 231
-  ObjectWanted: dwa
-  Location: dawsad
+  QuestName: Oven
+  RewardAmount: 220
+  ObjectWanted: Oven
+  Location: OverThere
+  CustomerText: yo i need a oven blud
+  QuestObjectSprite: {fileID: 0}

@@ -246,9 +246,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 629478099}
-        m_TargetAssemblyTypeName: QuestSystemPrototype, Assembly-CSharp
-        m_MethodName: getquest
+      - m_Target: {fileID: 636147327}
+        m_TargetAssemblyTypeName: Bell, Assembly-CSharp
+        m_MethodName: Refresh
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -752,6 +752,9 @@ MonoBehaviour:
   CustomerHead: {fileID: 1816841052}
   CustomerBody: {fileID: 1128781531}
   CustomerFace: {fileID: 720739981}
+  CurrentHeadImage: {fileID: 0}
+  CurrentTorsoImage: {fileID: 0}
+  CurrentFaceImage: {fileID: 0}
   HeadRenderer: {fileID: 0}
   FaceRenderer: {fileID: 0}
   BodyRenderer: {fileID: 0}
@@ -769,7 +772,7 @@ GameObject:
   - component: {fileID: 629478099}
   m_Layer: 0
   m_Name: QuestManager
-  m_TagString: Untagged
+  m_TagString: QuestSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -786,15 +789,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e04952efb14b7f4d9aa9ad4e80c5e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Quests:
-  - {fileID: 11400000, guid: 76de73d94df8a3e45ac047ce2cb9df29, type: 2}
-  - {fileID: 11400000, guid: 360eae6c98f4395449022136c0f56ad1, type: 2}
-  - {fileID: 11400000, guid: 721eb1be9b0763f41bc2eba6617211ef, type: 2}
+  Quests: []
   CurrentQuest: {fileID: 0}
   LocationText: {fileID: 56810002}
+  LocationObject: {fileID: 0}
   QuestText: {fileID: 289420693}
+  QuestObject: {fileID: 0}
   RewardText: {fileID: 1575701439}
+  RewardObject: {fileID: 0}
   CustomerDialogue: {fileID: 2031252586}
+  CustomerDialogueObject: {fileID: 0}
+  QuestComplete: 1
+  QuestRecieved: 0
+  debug: 
+  MasterQuestSystem: 0
+  RefreshQuest: 0
+  CurrentQuestSpot: {fileID: 0}
+  HeadCustomerSprite: {fileID: 0}
+  TorsoCustomerSprite: {fileID: 0}
+  FaceCustomerSprite: {fileID: 0}
 --- !u!4 &629478100
 Transform:
   m_ObjectHideFlags: 0
@@ -822,6 +835,7 @@ GameObject:
   - component: {fileID: 636147325}
   - component: {fileID: 636147324}
   - component: {fileID: 636147323}
+  - component: {fileID: 636147327}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -919,6 +933,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &636147327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636147321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed58235cbb0bb34d87c7c89d494ba59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &720739981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,8 +2194,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1956286006}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 629478099}
+        m_TargetAssemblyTypeName: QuestSystemPrototype, Assembly-CSharp
         m_MethodName: TrashQuestObject
         m_Mode: 1
         m_Arguments:

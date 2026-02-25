@@ -22,5 +22,7 @@ public class QuestScriptables : ScriptableObject
     [Header("Put the quest dialogue here")]
     public string CustomerText;
 
+    [Header("Put the Sprite here")]
+    public Sprite QuestObjectSprite;
 
 }

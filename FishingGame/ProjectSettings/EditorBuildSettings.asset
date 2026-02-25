@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Prototype/Prototyping Scenes/Shop/TheShop.unity
     guid: fe4cb4c563157e1498f4691abdc735ae
   - enabled: 1
+    path: Assets/Prototype/Prototyping Scenes/MainWorls/MainWorld.unity
+    guid: f3cfcce9a8d272043882d8cefb345786
+  - enabled: 1
     path: Assets/Prototype/Prototyping Scenes/Shop/ShopScene.unity
     guid: 84baf3a6f853d2e4fb7cde3c77db41d5
   m_configObjects:

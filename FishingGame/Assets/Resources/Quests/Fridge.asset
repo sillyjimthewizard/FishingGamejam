@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Fridge
   m_EditorClassIdentifier: 
   QuestName: Fridge
-  RewardAmount: 999
+  RewardAmount: 550
   ObjectWanted: Fridge
-  Location: South London
-  CustomerText: 'Hi i want a fridge, if u get me it i wont kill you, thanks!s! '
+  Location: Volcano
+  CustomerText: PLS I NEED THISSSSSSSSS
+  QuestObjectSprite: {fileID: 0}

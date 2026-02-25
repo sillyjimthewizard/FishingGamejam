@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb8779c31d512a41a4af7daab619450, type: 3}
-  m_Name: Wheel
+  m_Name: Toilet
   m_EditorClassIdentifier: 
-  QuestName: 
-  RewardAmount: 0
-  ObjectWanted: 
-  Location: 
+  QuestName: Toilet
+  RewardAmount: 300
+  ObjectWanted: Toilet
+  Location: banana
+  CustomerText: big bananas with burger sauce
+  QuestObjectSprite: {fileID: 0}

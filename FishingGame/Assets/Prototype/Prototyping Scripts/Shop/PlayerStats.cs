@@ -26,9 +26,5 @@ public class PlayerStats : MonoBehaviour
         
     }
 
-    public void TrashQuestObject()
-    {
-       QuestComplete = true;
-
-    }
+    
 }
