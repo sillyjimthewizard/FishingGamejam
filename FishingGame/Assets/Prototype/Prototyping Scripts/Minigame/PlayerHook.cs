@@ -7,6 +7,9 @@ public class PlayerHook : MonoBehaviour
     public float fallSpeed;
     public float moveSpeed;
 
+    [Header("References")]
+    private Rigidbody2D rb;
+
     [Header("Input")]
     [SerializeField] private bool mouseControl; // true = mouse  false = A/D
 
@@ -17,13 +20,18 @@ public class PlayerHook : MonoBehaviour
     bool startGame;
     public TMP_Text startGameText;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void Start()
     {
         startGameText.enabled = true;
         startGame = false;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         if (mouseControl)
         {
@@ -62,11 +70,11 @@ public class PlayerHook : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        transform.Translate(Vector2.right * horizontalInput * moveSpeed * Time.deltaTime);
+        rb.AddForceX(horizontalInput * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     private void HookFall()
     {
-        transform.Translate(Vector2.down * fallSpeed *  Time.deltaTime);
+        rb.AddForceY(-fallSpeed * Time.deltaTime, ForceMode2D.Impulse);
     }
 }
