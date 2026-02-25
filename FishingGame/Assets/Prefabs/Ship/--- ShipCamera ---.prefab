@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  followSpeed: 3
-  cameraDamp: 2
+  followSpeed: 50
+  cameraDamp: 0.5
 --- !u!20 &1555492167922427803
 Camera:
   m_ObjectHideFlags: 0
