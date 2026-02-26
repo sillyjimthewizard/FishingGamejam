@@ -31,7 +31,12 @@ public class ShopManager : MonoBehaviour
 
     private void Awake()
     {
-       HeadRenderer = CustomerHead.GetComponent<SpriteRenderer>();
+        CustomerBody = GameObject.Find("Body");
+        CustomerHead = GameObject.Find("Head");
+        CustomerFace = GameObject.Find("Face");
+
+
+        HeadRenderer = CustomerHead.GetComponent<SpriteRenderer>();
        BodyRenderer = CustomerBody.GetComponent<SpriteRenderer>();
        FaceRenderer = CustomerFace.GetComponent<SpriteRenderer>();
 
@@ -76,16 +81,12 @@ public class ShopManager : MonoBehaviour
 
     public void RandomiseCustomer()
     {
-        CurrentHeadImage = HeadImages[Random.Range(0, HeadImages.Length)];
-       CurrentTorsoImage = TorsoImages[Random.Range(0, TorsoImages.Length)];
-        CurrentFaceImage = FaceImages[Random.Range(0, FaceImages.Length)];
+        HeadRenderer.sprite = HeadImages[Random.Range(0, HeadImages.Length)];
+        BodyRenderer.sprite = TorsoImages[Random.Range(0, TorsoImages.Length)];
+        FaceRenderer.sprite = FaceImages[Random.Range(0, FaceImages.Length)];
 
-        HeadRenderer.sprite = CurrentHeadImage;
-        BodyRenderer.sprite = CurrentTorsoImage;
-        FaceRenderer.sprite = CurrentFaceImage;
-        QuestSystemPrototype.instance.HeadCustomerSprite = CurrentHeadImage;
-        QuestSystemPrototype.instance.FaceCustomerSprite = CurrentFaceImage;
-        QuestSystemPrototype.instance.TorsoCustomerSprite = CurrentTorsoImage;
+        
+        
         TempPlayerStats.QuestComplete = false;
 
         //HeadRenderer.size = new Vector2(1, 1);

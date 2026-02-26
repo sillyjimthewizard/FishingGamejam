@@ -7,6 +7,13 @@ TagManager:
   - shop
   - Wall
   - QuestSystem
+  - ShopUI
+  - Face
+  - Body
+  - Head
+  - Location
+  - Dialogue
+  - DND_UI
   layers:
   - Default
   - TransparentFX

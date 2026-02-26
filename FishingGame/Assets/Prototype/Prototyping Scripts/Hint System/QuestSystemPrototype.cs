@@ -11,13 +11,13 @@ public class QuestSystemPrototype : MonoBehaviour
     public QuestScriptables CurrentQuest;
 
     [Header("Text References")]
-    public TextMeshPro LocationText;
+    public TMP_Text LocationText;
     public GameObject LocationObject;
-    public TextMeshPro QuestText;
+    public TMP_Text QuestText;
     public GameObject QuestObject;
-    public TextMeshPro RewardText;
+    public TMP_Text RewardText;
     public GameObject RewardObject;
-    public TextMeshPro CustomerDialogue;
+    public TMP_Text CustomerDialogue;
     public GameObject CustomerDialogueObject;
 
     public static QuestSystemPrototype instance;
@@ -27,9 +27,12 @@ public class QuestSystemPrototype : MonoBehaviour
     public string debug;
     public bool MasterQuestSystem;
     public bool RefreshQuest;
+    public bool SceneCheck;
 
     [Header("GameObjects")]
     public GameObject CurrentQuestSpot;
+    public GameObject DND_UI;
+    public Canvas DND_UICanvas;
 
     [Header("Sprites")]
     public Sprite HeadCustomerSprite;
@@ -49,44 +52,47 @@ public class QuestSystemPrototype : MonoBehaviour
         if (objs.Length > 1 && MasterQuestSystem == false)
         {
             Destroy(this.gameObject);
-            RefreshTimer();
+           
         }
-        else
-        {
-            StartCoroutine(RefreshTimer());
-
-        }
-        ShowQuest();
+        
+       
     }
-
-   
 
     public void Update()
     {
 
-        LocationObject = GameObject.Find("Location");
-        LocationText = LocationObject.GetComponent<TextMeshPro>();
-        QuestObject = GameObject.Find("UI/QuestName");
-        QuestText = QuestObject.GetComponent<TextMeshPro>();
-        RewardObject = GameObject.Find("UI/RewardAmount");
-        RewardText = RewardObject.GetComponent<TextMeshPro>();
-        CustomerDialogueObject = GameObject.Find("UI/Dialogue");
-        CustomerDialogue = CustomerDialogueObject.GetComponent<TextMeshPro>();
+        //LocationObject = GameObject.Find("Location");
+        //LocationText = LocationObject.GetComponent<TextMeshPro>();
+        //QuestObject = GameObject.Find("UI/QuestName");
+        //QuestText = QuestObject.GetComponent<TextMeshPro>();
+        //RewardObject = GameObject.Find("UI/RewardAmount");
+        //RewardText = RewardObject.GetComponent<TextMeshPro>();
+        //CustomerDialogueObject = GameObject.Find("UI/Dialogue");
+        //CustomerDialogue = CustomerDialogueObject.GetComponent<TextMeshPro>();
 
 
         if (SceneManager.GetActiveScene().name == "MainWorld")
         {
-            SetQuestSpots();
+            if (SceneCheck == true)
+            {
+                SetQuestSpots();
+                DND_UI = GameObject.Find("DND_UI");
+                DND_UICanvas = DND_UI.GetComponent<Canvas>();
+                DND_UICanvas.enabled = false;
+                SceneCheck = false;
+            }
         }
 
-        if (SceneManager.GetActiveScene().name == "TheShop")
+        else if (SceneManager.GetActiveScene().name == "TheShop")
         {
-
-           
-
-            ShowQuest();
-            
-
+            if (SceneCheck == false)
+            {
+                DND_UI = GameObject.Find("DND_UI");
+                DND_UICanvas = DND_UI.GetComponent<Canvas>();
+                DND_UICanvas.enabled = true;
+                DND_UI.SetActive(true);
+                SceneCheck = true;
+            }
         }
     }
 
@@ -94,6 +100,17 @@ public class QuestSystemPrototype : MonoBehaviour
     {
         if (QuestComplete == true)
         {
+
+            LocationObject = GameObject.Find("Location");
+            LocationText = LocationObject.GetComponent<TMP_Text>();
+            QuestObject = GameObject.Find("UI/QuestName");
+            QuestText = QuestObject.GetComponent<TMP_Text>();
+            RewardObject = GameObject.Find("UI/RewardAmount");
+            RewardText = RewardObject.GetComponent<TMP_Text>();
+            CustomerDialogueObject = GameObject.Find("Dialogue");
+            CustomerDialogue = CustomerDialogueObject.GetComponent<TMP_Text>();
+
+
             Quests = Resources.LoadAll<QuestScriptables>("Quests");
             CurrentQuest = Quests[Random.Range(0, Quests.Length)];
             LocationText.text = CurrentQuest.Location.ToString();
@@ -108,30 +125,7 @@ public class QuestSystemPrototype : MonoBehaviour
         }
     }
 
-    public void ShowQuest()
-    {
-        Debug.Log("ShowQuestDebug");
-        LocationObject = GameObject.Find("Location");
-        LocationText = LocationObject.GetComponent<TextMeshPro>();
-        QuestObject = GameObject.Find("UI/QuestName");
-        QuestText = QuestObject.GetComponent<TextMeshPro>();
-        RewardObject = GameObject.Find("UI/RewardAmount");
-        RewardText = RewardObject.GetComponent<TextMeshPro>();
-        CustomerDialogueObject = GameObject.Find("UI/Dialogue");
-        CustomerDialogue = CustomerDialogueObject.GetComponent<TextMeshPro>();
-
-        LocationText.text = CurrentQuest.Location.ToString();
-        QuestText.text = CurrentQuest.QuestName.ToString();
-        RewardText.text = CurrentQuest.RewardAmount.ToString();
-        CustomerDialogue.text = CurrentQuest.CustomerText.ToString();
-
-        ShopManager.instance.HeadRenderer.sprite = HeadCustomerSprite;
-        ShopManager.instance.FaceRenderer.sprite = FaceCustomerSprite;
-        ShopManager.instance.BodyRenderer.sprite = TorsoCustomerSprite;
-
-
-        RefreshQuest = false;
-    }
+   
 
     public void TrashQuestObject()
     {
@@ -146,19 +140,7 @@ public class QuestSystemPrototype : MonoBehaviour
 
     }
 
-    public IEnumerator RefreshTimer()
-    {
 
-        yield return new WaitForSeconds(0.1f);
-        RefreshQuest = true;
-        ShowQuest();
-        Debug.Log("refresh");
-        yield return new WaitForSeconds(1f);
-        RefreshQuest = true;
-        ShowQuest();
-        Debug.Log("refresh2");
-
-    }
 
 
 }
