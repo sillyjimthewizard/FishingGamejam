@@ -10,13 +10,14 @@ public class WASDMove : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    [Header("References")]
+    private Rigidbody2D rb;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         GetInput();
@@ -33,6 +34,8 @@ public class WASDMove : MonoBehaviour
     void VerticalMovement()
     { 
         transform.Translate(Vector2.up * verticalInput * moveSpeed * Time.deltaTime);
+
+        // rb.AddForce(transform.up * verticalInput * moveSpeed * Time.deltaTime);
     }
 
     void Turning()
