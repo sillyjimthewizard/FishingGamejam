@@ -17,6 +17,7 @@ public class PlayerHook : MonoBehaviour
     float horizontalInput;
 
     [Header("Game Start")]
+    bool canMove;
     bool startGame;
     public TMP_Text startGameText;
 
@@ -31,24 +32,37 @@ public class PlayerHook : MonoBehaviour
         startGame = false;
     }
 
+    void Update()
+    {
+        if (startGame == false)
+        {
+            WaitForGameStart();
+        }
+
+        // checking if the bool it is setting true is false prevents unnessecary checks every frame
+        if (transform.position.y <= -3 && canMove == false)
+        {
+            canMove = true;
+        }
+    }
+
     private void FixedUpdate()
     {
-        if (mouseControl)
+        if (canMove == true)
         {
-            MouseMovement();
-        }
-        else
-        {
-            KeyboardMovement();
+            if (mouseControl)
+            {
+                MouseMovement();
+            }
+            else
+            {
+                KeyboardMovement();
+            }
         }
 
         if (startGame == true)
         {
             HookFall();
-        }
-        else
-        {
-            WaitForGameStart();
         }
     }
 
@@ -70,11 +84,13 @@ public class PlayerHook : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        rb.AddForceX(horizontalInput * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        // rb.AddForceX(horizontalInput * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
+
+        rb.position += Vector2.right * horizontalInput * moveSpeed * Time.deltaTime;
     }
 
     private void HookFall()
     {
-        rb.AddForceY(-fallSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        rb.position -= Vector2.down * -fallSpeed * Time.deltaTime;
     }
 }
