@@ -11,6 +11,7 @@ public class ClickToMove : MonoBehaviour
     [Header("Destination")]
     [SerializeField] private Transform playerPos;
     [SerializeField] private Vector3[] points;
+    [SerializeField] private GameObject destination;
 
     [Header("Side Detection")]
     [SerializeField] private GameObject[] sidePoints;
@@ -43,6 +44,7 @@ public class ClickToMove : MonoBehaviour
     {
         points[0] = gameObject.transform.position; // player pos
         points[1] = mousePos; // mouse pos (destination)
+        destination.transform.position = points[1];
         yield break;
     }
 
@@ -90,6 +92,7 @@ public class ClickToMove : MonoBehaviour
         float progress = 0f;
         do
         {
+            destination.SetActive(true);
             TurnShip();
             travelling = true;
             float angle = startAngle + progress * travel;
@@ -98,6 +101,7 @@ public class ClickToMove : MonoBehaviour
             yield return null;
         } while (progress < 1f);
 
+        destination.SetActive(false);
         travelling = false;
         player.position = end;
     }

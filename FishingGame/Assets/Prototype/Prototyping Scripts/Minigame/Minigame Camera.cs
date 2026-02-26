@@ -17,19 +17,24 @@ public class MinigameCamera : MonoBehaviour
 
     Vector3 currentVelocity;
     bool startCameraFollow;
+    bool canMove;
 
     private void Awake()
     {
         startCameraFollow = false;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        // checking if the bool it is setting true is false prevents unnessecary checks every frame
+        if (Input.GetKeyDown(KeyCode.Space) && startCameraFollow == false)
         {
             startCameraFollow = true;
         }
+    }
 
+    void FixedUpdate()
+    {
         if (startCameraFollow)
         {
             transform.position = Vector3.SmoothDamp(transform.position, new(0, player.transform.position.y - yOffset, zOffset), ref currentVelocity, cameraDamp, followSpeed);
