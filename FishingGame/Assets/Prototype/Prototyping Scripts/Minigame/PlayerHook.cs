@@ -15,6 +15,7 @@ public class PlayerHook : MonoBehaviour
 
     [Header("Keyboard Input")]
     float horizontalInput;
+    float verticalInput;
 
     [Header("Game Start")]
     bool canMove;
@@ -84,13 +85,15 @@ public class PlayerHook : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        // rb.AddForceX(horizontalInput * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        rb.AddForceX(horizontalInput * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
 
-        rb.position += Vector2.right * horizontalInput * moveSpeed * Time.deltaTime;
+        // rb.position += Vector2.right * horizontalInput * moveSpeed * Time.deltaTime;
     }
 
     private void HookFall()
     {
-        rb.position -= Vector2.down * -fallSpeed * Time.deltaTime;
+        verticalInput = Input.GetAxisRaw("Vertical");
+
+        rb.position -= Vector2.up * verticalInput * -fallSpeed * Time.deltaTime;
     }
 }
