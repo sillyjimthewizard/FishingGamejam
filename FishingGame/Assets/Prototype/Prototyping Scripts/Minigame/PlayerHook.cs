@@ -5,22 +5,27 @@ public class PlayerHook : MonoBehaviour
 {
     [Header("Editables")]
     public float fallSpeed;
+    public float boostSpeed;
     public float moveSpeed;
+
+    float currentFallSpeed;
 
     [Header("References")]
     private Rigidbody2D rb;
 
-    [Header("Input")]
-    [SerializeField] private bool mouseControl; // true = mouse  false = A/D
-
     [Header("Keyboard Input")]
     float horizontalInput;
-    float verticalInput;
 
     [Header("Game Start")]
     bool canMove;
     bool startGame;
     public TMP_Text startGameText;
+
+    [Header("Durability")]
+    float currentDurability;
+    public float maxDurability;
+    public float wallDecreaseAmount;
+    public float fishDecreaseAmount;
 
     private void Awake()
     {
@@ -45,26 +50,18 @@ public class PlayerHook : MonoBehaviour
         {
             canMove = true;
         }
-    }
 
-    private void FixedUpdate()
-    {
         if (canMove == true)
         {
-            if (mouseControl)
-            {
-                MouseMovement();
-            }
-            else
-            {
-                KeyboardMovement();
-            }
+            KeyboardMovement();
         }
 
         if (startGame == true)
         {
             HookFall();
         }
+
+        Durability();
     }
 
     private void WaitForGameStart()
@@ -76,24 +73,31 @@ public class PlayerHook : MonoBehaviour
         }
     }
 
-    private void MouseMovement()
-    {
-
-    }
-
     private void KeyboardMovement()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        rb.AddForceX(horizontalInput * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        // rb.AddForceX(horizontalInput * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
 
-        // rb.position += Vector2.right * horizontalInput * moveSpeed * Time.deltaTime;
+        rb.position += Vector2.right * horizontalInput * moveSpeed * Time.deltaTime;
     }
 
     private void HookFall()
     {
-        verticalInput = Input.GetAxisRaw("Vertical");
+        rb.position -= Vector2.up * currentFallSpeed * Time.deltaTime;
 
-        rb.position -= Vector2.up * verticalInput * -fallSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.S))
+        {
+            currentFallSpeed = boostSpeed;
+        }
+        else
+        {
+            currentFallSpeed = fallSpeed;
+        }
+    }
+
+    private void Durability()
+    {
+
     }
 }

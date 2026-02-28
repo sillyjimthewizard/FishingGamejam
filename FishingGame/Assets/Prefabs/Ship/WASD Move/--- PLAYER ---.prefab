@@ -48,7 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  backSpeed: 2
   turnSpeed: 50
+  acceleration: 3
+  deceleration: 1.5
+  stoppingDistance: 3.5
 --- !u!50 &3944221708558930737
 Rigidbody2D:
   serializedVersion: 5

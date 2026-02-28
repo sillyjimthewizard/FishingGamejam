@@ -1442,8 +1442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 3.5
+  boostSpeed: 5
   moveSpeed: 6
-  mouseControl: 0
   startGameText: {fileID: 556861222}
 --- !u!50 &1924943011
 Rigidbody2D:

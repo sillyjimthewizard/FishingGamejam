@@ -1084,22 +1084,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: --- PLAYER ---
       objectReference: {fileID: 0}
-    - target: {fileID: 8038069479460764483, guid: a40b3e24cd1a81743a3fe2ee410f15b6, type: 3}
-      propertyPath: backSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038069479460764483, guid: a40b3e24cd1a81743a3fe2ee410f15b6, type: 3}
-      propertyPath: acceleration
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038069479460764483, guid: a40b3e24cd1a81743a3fe2ee410f15b6, type: 3}
-      propertyPath: deceleration
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038069479460764483, guid: a40b3e24cd1a81743a3fe2ee410f15b6, type: 3}
-      propertyPath: stoppingDistance
-      value: 3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8552671619571928582, guid: a40b3e24cd1a81743a3fe2ee410f15b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
