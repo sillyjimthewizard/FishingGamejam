@@ -12,15 +12,15 @@ public class FishingSpots : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnTriggerEnter2D()
+    void OnTriggerStay2D()
     {
-        if (gameObject.name == QuestSystemPrototype.instance.CurrentQuest.Location)
+        if (gameObject.name == QuestSystemPrototype.instance.CurrentQuest.Location && Input.GetKeyDown("e"))
         {
             Debug.Log("start fishing");
             QuestSystemPrototype.instance.QuestComplete = true;
         }
 
-        if (gameObject.name == "BackToShop")
+        if (gameObject.name == "BackToShop" && Input.GetKeyDown("e"))
         {
          //  QuestSystemPrototype.instance.StartCoroutine(RefreshTimer());
             SceneManager.UnloadSceneAsync("MainWorld");

@@ -20,6 +20,9 @@ public class QuestSystemPrototype : MonoBehaviour
     public TMP_Text CustomerDialogue;
     public GameObject CustomerDialogueObject;
 
+    public TMP_Text CurrencyText;
+    public GameObject CurrencyObject;
+
     public static QuestSystemPrototype instance;
 
     public bool QuestComplete;
@@ -28,6 +31,7 @@ public class QuestSystemPrototype : MonoBehaviour
     public bool MasterQuestSystem;
     public bool RefreshQuest;
     public bool SceneCheck;
+    public bool firstQuest;
 
     [Header("GameObjects")]
     public GameObject CurrentQuestSpot;
@@ -39,11 +43,14 @@ public class QuestSystemPrototype : MonoBehaviour
     public Sprite TorsoCustomerSprite;
     public Sprite FaceCustomerSprite;
 
+    public int RewardAmountTest;
+
     //public bool questcomplete;
 
     // Update is called once per frame
     void Awake()
     {
+        firstQuest = true;
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
@@ -98,20 +105,25 @@ public class QuestSystemPrototype : MonoBehaviour
 
     public void GetQuest()
     {
+        CurrencyObject = GameObject.Find("Currency");
+        CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
+        
+        Debug.Log("finding");
+        LocationObject = GameObject.Find("DND_UI/Location");
+        LocationText = LocationObject.GetComponent<TMP_Text>();
+        QuestObject = GameObject.Find("UI/QuestName");
+        QuestText = QuestObject.GetComponent<TMP_Text>();
+        RewardObject = GameObject.Find("UI/RewardAmount");
+        RewardText = RewardObject.GetComponent<TMP_Text>();
+        CustomerDialogueObject = GameObject.Find("Dialogue");
+        CustomerDialogue = CustomerDialogueObject.GetComponent<TMP_Text>();
+
         if (QuestComplete == true)
         {
 
-            LocationObject = GameObject.Find("Location");
-            LocationText = LocationObject.GetComponent<TMP_Text>();
-            QuestObject = GameObject.Find("UI/QuestName");
-            QuestText = QuestObject.GetComponent<TMP_Text>();
-            RewardObject = GameObject.Find("UI/RewardAmount");
-            RewardText = RewardObject.GetComponent<TMP_Text>();
-            CustomerDialogueObject = GameObject.Find("Dialogue");
-            CustomerDialogue = CustomerDialogueObject.GetComponent<TMP_Text>();
-
-
+            
             Quests = Resources.LoadAll<QuestScriptables>("Quests");
+            
             CurrentQuest = Quests[Random.Range(0, Quests.Length)];
             LocationText.text = CurrentQuest.Location.ToString();
             QuestText.text = CurrentQuest.QuestName.ToString();
@@ -121,7 +133,17 @@ public class QuestSystemPrototype : MonoBehaviour
             QuestRecieved = true;
             ShopManager.instance.RandomiseCustomer();
             MasterQuestSystem = true;
+            RewardAmountTest += CurrentQuest.RewardAmount;
+            if (firstQuest == false)
+            {
+                CurrencyText.text = "Currency:  " + Mathf.RoundToInt(RewardAmountTest).ToString();
+            }
+            if (firstQuest == true) {
+                
+                CurrencyText.text = "Currency: 0";
 
+                }
+            firstQuest = false;
         }
     }
 
