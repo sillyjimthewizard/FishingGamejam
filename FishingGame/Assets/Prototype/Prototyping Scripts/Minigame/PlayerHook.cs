@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerHook : MonoBehaviour
 {
     [Header("Editables")]
     public float fallSpeed;
     public float boostSpeed;
+    public float slowSpeed;
     public float moveSpeed;
 
     float currentFallSpeed;
@@ -22,10 +24,10 @@ public class PlayerHook : MonoBehaviour
     public TMP_Text startGameText;
 
     [Header("Durability")]
-    float currentDurability;
     public float maxDurability;
     public float wallDecreaseAmount;
     public float fishDecreaseAmount;
+    float currentDurability;
 
     private void Awake()
     {
@@ -36,6 +38,19 @@ public class PlayerHook : MonoBehaviour
     {
         startGameText.enabled = true;
         startGame = false;
+
+        ResetGame();
+    }
+
+    void ResetGame()
+    {
+        currentDurability = maxDurability;
+    }
+
+    void EndGame()
+    {
+        QuestSystemPrototype.instance.QuestComplete = true;
+        SceneManager.LoadScene("MainWorld");
     }
 
     void Update()
@@ -60,8 +75,6 @@ public class PlayerHook : MonoBehaviour
         {
             HookFall();
         }
-
-        Durability();
     }
 
     private void WaitForGameStart()
@@ -90,14 +103,30 @@ public class PlayerHook : MonoBehaviour
         {
             currentFallSpeed = boostSpeed;
         }
+        else if (Input.GetKey(KeyCode.W))
+        {
+            currentFallSpeed = slowSpeed;
+        }
         else
         {
             currentFallSpeed = fallSpeed;
         }
     }
 
-    private void Durability()
+    private void WallDurability()
     {
+        currentDurability -= wallDecreaseAmount;
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Trash"))
+        {
+            EndGame();
+        }
+        if (collision.CompareTag("Wall"))
+        {
+            WallDurability();
+        }
     }
 }

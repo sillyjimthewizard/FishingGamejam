@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class QuestSystemPrototype : MonoBehaviour
 {
+    public static QuestSystemPrototype instance;
+
     [Header("Scriptable Objects")]
     public QuestScriptables[] Quests;
     public QuestScriptables CurrentQuest;
@@ -23,8 +25,7 @@ public class QuestSystemPrototype : MonoBehaviour
     public TMP_Text CurrencyText;
     public GameObject CurrencyObject;
 
-    public static QuestSystemPrototype instance;
-
+    [Header("Bools")]
     public bool QuestComplete;
     public bool QuestRecieved;
     public string debug;
