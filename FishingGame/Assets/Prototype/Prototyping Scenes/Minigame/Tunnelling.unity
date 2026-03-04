@@ -1673,6 +1673,7 @@ MonoBehaviour:
   cameraDamp: 1
   player: {fileID: 1924943008}
   yOffset: 5
+  startCameraFollow: 0
 --- !u!1 &1011338240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2241,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1548922431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548922433}
+  - component: {fileID: 1548922432}
+  m_Layer: 0
+  m_Name: --- Minigame Manager ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1548922432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548922431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdabe7a17f17194699115b375f981b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startGame: 0
+  resetGame: 0
+  resetCamera: 0
+--- !u!4 &1548922433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548922431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569962619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2694,6 +2742,7 @@ GameObject:
   - component: {fileID: 1924943010}
   - component: {fileID: 1924943011}
   - component: {fileID: 1924943012}
+  - component: {fileID: 1924943013}
   m_Layer: 0
   m_Name: --- Hook ---
   m_TagString: Untagged
@@ -2731,10 +2780,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 3.5
   boostSpeed: 5
-  slowSpeed: 3
+  slowSpeed: 2
   moveSpeed: 6
   startGameText: {fileID: 556861222}
-  maxDurability: 0
+  maxDurability: 100
   wallDecreaseAmount: 50
   fishDecreaseAmount: 20
 --- !u!50 &1924943011
@@ -2810,6 +2859,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.44035792, y: 0.6851079}
   m_EdgeRadius: 0
+--- !u!95 &1924943013
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924943008}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d85cc5955f84afe44b3e8a4f399ebc34, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1930927732
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,3 +2981,4 @@ SceneRoots:
   - {fileID: 1423994713}
   - {fileID: 726447379}
   - {fileID: 1011338242}
+  - {fileID: 1548922433}

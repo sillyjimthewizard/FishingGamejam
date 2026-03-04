@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerHook : MonoBehaviour
 {
@@ -14,13 +15,14 @@ public class PlayerHook : MonoBehaviour
 
     [Header("References")]
     private Rigidbody2D rb;
+    private Animator animator;
 
     [Header("Keyboard Input")]
     float horizontalInput;
 
     [Header("Game Start")]
+    private Vector2 startPos;
     bool canMove;
-    bool startGame;
     public TMP_Text startGameText;
 
     [Header("Durability")]
@@ -32,19 +34,22 @@ public class PlayerHook : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
+        startPos = transform.position;
+        currentDurability = maxDurability;
     }
 
     private void Start()
     {
         startGameText.enabled = true;
-        startGame = false;
-
-        ResetGame();
     }
 
-    void ResetGame()
+    IEnumerator PlayerDeath()
     {
-        currentDurability = maxDurability;
+        animator.SetTrigger("Death");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void EndGame()
@@ -55,9 +60,15 @@ public class PlayerHook : MonoBehaviour
 
     void Update()
     {
-        if (startGame == false)
+        Durability();
+
+        if (MinigameManager.instance.startGame == false)
         {
             WaitForGameStart();
+        }
+        if (MinigameManager.instance.resetGame == true)
+        {
+            StartCoroutine(PlayerDeath());
         }
 
         // checking if the bool it is setting true is false prevents unnessecary checks every frame
@@ -71,7 +82,7 @@ public class PlayerHook : MonoBehaviour
             KeyboardMovement();
         }
 
-        if (startGame == true)
+        if (MinigameManager.instance.startGame == true)
         {
             HookFall();
         }
@@ -82,15 +93,14 @@ public class PlayerHook : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             startGameText.enabled = false;
-            startGame = true;
+            MinigameCamera.instance.startCameraFollow = true;
+            MinigameManager.instance.startGame = true;
         }
     }
 
     private void KeyboardMovement()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-
-        // rb.AddForceX(horizontalInput * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
 
         rb.position += Vector2.right * horizontalInput * moveSpeed * Time.deltaTime;
     }
@@ -113,9 +123,23 @@ public class PlayerHook : MonoBehaviour
         }
     }
 
+    private void Durability()
+    {
+        if (currentDurability <= 0)
+        {
+            currentDurability = 0;
+            StartCoroutine(PlayerDeath());
+        }
+    }
+
     private void WallDurability()
     {
-        currentDurability -= wallDecreaseAmount;
+        currentDurability -= wallDecreaseAmount * Time.deltaTime;
+    }
+
+    private void FishDurability()
+    {
+        currentDurability -= fishDecreaseAmount * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -124,7 +148,15 @@ public class PlayerHook : MonoBehaviour
         {
             EndGame();
         }
-        if (collision.CompareTag("Wall"))
+        if (collision.CompareTag("Fish"))
+        {
+            FishDurability();
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
         {
             WallDurability();
         }

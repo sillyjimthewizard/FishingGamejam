@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using static UnityEngine.GraphicsBuffer;
 
 public class MinigameCamera : MonoBehaviour
 {
+    public static MinigameCamera instance;
+
     [Header("Editables")]
     public float followSpeed;
     public float cameraDamp;
@@ -16,26 +19,25 @@ public class MinigameCamera : MonoBehaviour
     float zOffset = -10;
 
     Vector3 currentVelocity;
-    bool startCameraFollow;
-    bool canMove;
+    public bool startCameraFollow;
 
     private void Awake()
     {
+        instance = this;
         startCameraFollow = false;
     }
 
     private void Update()
     {
-        // checking if the bool it is setting true is false prevents unnessecary checks every frame
-        if (Input.GetKeyDown(KeyCode.Space) && startCameraFollow == false)
+        if (MinigameManager.instance.resetGame == true)
         {
-            startCameraFollow = true;
+            
         }
     }
 
     void FixedUpdate()
     {
-        if (startCameraFollow)
+        if (startCameraFollow == true)
         {
             transform.position = Vector3.SmoothDamp(transform.position, new(0, player.transform.position.y - yOffset, zOffset), ref currentVelocity, cameraDamp, followSpeed);
         }
