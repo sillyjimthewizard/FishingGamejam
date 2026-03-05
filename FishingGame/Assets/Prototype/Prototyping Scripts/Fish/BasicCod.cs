@@ -6,25 +6,8 @@ public class BasicCod : MonoBehaviour
     [Header("Editables")]
     public float moveSpeed;
 
-    [Header("Game Reset")]
-    private Vector2 startPos;
-
-    private void Start()
-    {
-        startPos = transform.position;
-    }
-
-    void GameReset()
-    {
-        if (MinigameManager.instance.resetGame == true)
-        {
-            transform.position = startPos;
-        }
-    }    
-
     void Update()
     {
-        GameReset();
         Move();
     }
 

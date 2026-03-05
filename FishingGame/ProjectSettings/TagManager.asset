@@ -15,6 +15,7 @@ TagManager:
   - Dialogue
   - DND_UI
   - Trash
+  - Fish
   layers:
   - Default
   - TransparentFX
