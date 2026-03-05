@@ -91,23 +91,29 @@ public class QuestSystemPrototype : MonoBehaviour
             }
         }
 
-        else if (SceneManager.GetActiveScene().name == "TheShop")
-        {
-            if (SceneCheck == false)
-            {
-                DND_UI = GameObject.Find("DND_UI");
-                DND_UICanvas = DND_UI.GetComponent<Canvas>();
-                DND_UICanvas.enabled = true;
-                DND_UI.SetActive(true);
-                SceneCheck = true;
-            }
-        }
+         else if (SceneManager.GetActiveScene().name == "TheShop")
+         {
+             if (SceneCheck == true)
+             {
+                 DND_UI = GameObject.Find("DND_UI");
+                 DND_UICanvas = DND_UI.GetComponent<Canvas>();
+                 DND_UICanvas.enabled = true;
+                 DND_UI.SetActive(true);
+                 SceneCheck = false;
+                 
+                 Debug.Log(CurrentQuest.RewardAmount);
+                 // Debug.Log(CurrencyText.text);
+             }
+         }
+        
+        CurrencyObject = GameObject.Find("DND_UI/Currency");
+        CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
+        CurrencyText.text = RewardAmountTest.ToString();
     }
 
     public void GetQuest()
     {
-        CurrencyObject = GameObject.Find("Currency");
-        CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
+        
         
         Debug.Log("finding");
         LocationObject = GameObject.Find("DND_UI/Location");
@@ -135,16 +141,20 @@ public class QuestSystemPrototype : MonoBehaviour
             ShopManager.instance.RandomiseCustomer();
             MasterQuestSystem = true;
             RewardAmountTest += CurrentQuest.RewardAmount;
-            if (firstQuest == false)
+           /* if (firstQuest == false)
             {
+                CurrencyObject = GameObject.Find("Currency");
+                CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
                 CurrencyText.text = "Currency:  " + Mathf.RoundToInt(RewardAmountTest).ToString();
             }
-            if (firstQuest == true) {
-                
+            if (firstQuest == true && RewardAmountTest == 0) {
+                CurrencyObject = GameObject.Find("Currency");
+                CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
                 CurrencyText.text = "Currency: 0";
 
                 }
             firstQuest = false;
+           */
         }
     }
 
@@ -152,6 +162,7 @@ public class QuestSystemPrototype : MonoBehaviour
 
     public void TrashQuestObject()
     {
+
         QuestComplete = true;
 
     }
