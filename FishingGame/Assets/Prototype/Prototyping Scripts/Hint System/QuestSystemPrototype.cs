@@ -46,6 +46,8 @@ public class QuestSystemPrototype : MonoBehaviour
 
     public int RewardAmountTest;
 
+    public int AmountOfQuestsCompleted;
+
     //public bool questcomplete;
 
     // Update is called once per frame
@@ -106,9 +108,14 @@ public class QuestSystemPrototype : MonoBehaviour
              }
          }
         
-        CurrencyObject = GameObject.Find("DND_UI/Currency");
-        CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
-        CurrencyText.text = RewardAmountTest.ToString();
+       // CurrencyObject = GameObject.Find("DND_UI/Currency");
+        //CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
+        //CurrencyText.text = RewardAmountTest.ToString();
+        if (AmountOfQuestsCompleted >= 5)
+        {
+            Debug.Log("game complet");
+
+        }
     }
 
     public void GetQuest()
@@ -118,17 +125,16 @@ public class QuestSystemPrototype : MonoBehaviour
         Debug.Log("finding");
         LocationObject = GameObject.Find("DND_UI/Location");
         LocationText = LocationObject.GetComponent<TMP_Text>();
-        QuestObject = GameObject.Find("UI/QuestName");
+        QuestObject = GameObject.Find("DND_UI/QuestName");
         QuestText = QuestObject.GetComponent<TMP_Text>();
-        RewardObject = GameObject.Find("UI/RewardAmount");
+        RewardObject = GameObject.Find("DND_UI/RewardAmount");
         RewardText = RewardObject.GetComponent<TMP_Text>();
-        CustomerDialogueObject = GameObject.Find("Dialogue");
+        CustomerDialogueObject = GameObject.Find("DND_UI/Dialogue");
         CustomerDialogue = CustomerDialogueObject.GetComponent<TMP_Text>();
 
         if (QuestComplete == true)
         {
-
-            
+            AmountOfQuestsCompleted++;
             Quests = Resources.LoadAll<QuestScriptables>("Quests");
             
             CurrentQuest = Quests[Random.Range(0, Quests.Length)];
@@ -141,6 +147,8 @@ public class QuestSystemPrototype : MonoBehaviour
             ShopManager.instance.RandomiseCustomer();
             MasterQuestSystem = true;
             RewardAmountTest += CurrentQuest.RewardAmount;
+            
+
            /* if (firstQuest == false)
             {
                 CurrencyObject = GameObject.Find("Currency");
