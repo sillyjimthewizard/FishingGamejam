@@ -132,8 +132,7 @@ public class QuestSystemPrototype : MonoBehaviour
         CustomerDialogueObject = GameObject.Find("DND_UI/Dialogue");
         CustomerDialogue = CustomerDialogueObject.GetComponent<TMP_Text>();
 
-        if (QuestComplete == true)
-        {
+        
             AmountOfQuestsCompleted++;
             Quests = Resources.LoadAll<QuestScriptables>("Quests");
             
@@ -163,7 +162,7 @@ public class QuestSystemPrototype : MonoBehaviour
                 }
             firstQuest = false;
            */
-        }
+        
     }
 
    
