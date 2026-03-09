@@ -18,6 +18,12 @@ public class FishingSpots : MonoBehaviour
     // Update is called once per frame
     void OnTriggerStay2D()
     {
+        if (Input.GetKeyDown("e"))
+        {
+            Debug.Log("E clicked");
+        
+        }
+
         if (Input.GetKeyDown("e") && gameObject.name == QuestSystemPrototype.CurrentQuest.Location && QuestSystemPrototype.QuestComplete == false)
         {
             Debug.Log("start fishing");
