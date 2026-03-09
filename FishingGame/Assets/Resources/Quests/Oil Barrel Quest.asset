@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb8779c31d512a41a4af7daab619450, type: 3}
-  m_Name: Oven
+  m_Name: Oil Barrel Quest
   m_EditorClassIdentifier: 
-  QuestName: Oven
-  RewardAmount: 220
-  ObjectWanted: Oven
-  Location: OverThere
-  CustomerText: yo i need a oven blud
-  QuestObjectSprite: {fileID: 0}
+  QuestName: Oil Spill
+  RewardAmount: 300
+  ObjectWanted: Oil Barrel
+  Location: Factory District
+  CustomerText: My oil shipment is missing an oil barrel, please find it for me.
+    The only place I think it could be is the Factory District
+  QuestObjectSprite: {fileID: 21300000, guid: 9f07f65748163814592eaef68d21a1ed, type: 3}
