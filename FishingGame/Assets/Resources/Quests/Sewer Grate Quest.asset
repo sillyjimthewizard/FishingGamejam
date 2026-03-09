@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb8779c31d512a41a4af7daab619450, type: 3}
-  m_Name: Fridge
+  m_Name: Sewer Grate Quest
   m_EditorClassIdentifier: 
-  QuestName: Fridge
-  RewardAmount: 550
-  ObjectWanted: Fridge
-  Location: Volcano
-  CustomerText: PLS I NEED THISSSSSSSSS
+  QuestName: Niche Collectables
+  RewardAmount: 200
+  ObjectWanted: Silly Jim Sewer Grate
+  Location: Collectables District
+  CustomerText: Im looking for this niche collectable which apparently ended up in
+    the ocean a few years ago around the Collectables District, can you have a look
+    for it for me
   QuestObjectSprite: {fileID: 0}

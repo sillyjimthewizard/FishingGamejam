@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb8779c31d512a41a4af7daab619450, type: 3}
-  m_Name: Toilet
+  m_Name: Founder Statue Quest
   m_EditorClassIdentifier: 
-  QuestName: Toilet
-  RewardAmount: 300
-  ObjectWanted: Toilet
-  Location: banana
-  CustomerText: big bananas with burger sauce
+  QuestName: Forgotten History
+  RewardAmount: 600
+  ObjectWanted: Founders Statue
+  Location: History District
+  CustomerText: " A few years ago the statue of our town\u2019s founder was dropped
+    into the ocean while it was on its way back from being repaired. We need it back
+    as soon as possible! It should be in the History District. "
   QuestObjectSprite: {fileID: 0}
