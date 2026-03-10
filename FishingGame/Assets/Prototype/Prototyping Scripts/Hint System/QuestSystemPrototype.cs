@@ -49,6 +49,9 @@ public class QuestSystemPrototype : MonoBehaviour
 
     public int AmountOfQuestsCompleted;
 
+    public Vector3 PlayerPosition;
+    public GameObject Player;
+
     //public bool questcomplete;
 
     // Update is called once per frame
@@ -87,11 +90,14 @@ public class QuestSystemPrototype : MonoBehaviour
             if (SceneCheckWorld == true)
             {
                 SetQuestSpots();
+                Player = GameObject.Find("--- PLAYER ---");
+                Player.transform.position = PlayerPosition;
                 DND_UI = GameObject.Find("DND_UI");
                 DND_UICanvas = DND_UI.GetComponent<Canvas>();
                 DND_UICanvas.enabled = false;
                 SceneCheckShop = true;
                 SceneCheckWorld = false;
+
             }
         }
 

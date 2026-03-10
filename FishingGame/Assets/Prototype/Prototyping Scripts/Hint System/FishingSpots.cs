@@ -7,6 +7,8 @@ public class FishingSpots : MonoBehaviour
     public GameObject QuestSystem;
     public QuestSystemPrototype QuestSystemPrototype;
 
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,13 +28,17 @@ public class FishingSpots : MonoBehaviour
 
         if (Input.GetKeyDown("e") && gameObject.name == QuestSystemPrototype.CurrentQuest.Location && QuestSystemPrototype.QuestComplete == false)
         {
+            QuestSystemPrototype.PlayerPosition = this.transform.position;
+            
             Debug.Log("start fishing");
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MainWorld");
             SceneManager.LoadScene("Tunnelling");
         }
 
         if (gameObject.name == "BackToShop" && Input.GetKeyDown("e"))
         {
-         //  QuestSystemPrototype.instance.StartCoroutine(RefreshTimer());
+            QuestSystemPrototype.PlayerPosition = this.transform.position;
+            //  QuestSystemPrototype.instance.StartCoroutine(RefreshTimer());
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MainWorld");
             SceneManager.LoadScene("TheShop");
 

@@ -146,6 +146,7 @@ public class PlayerHook : MonoBehaviour
     {
         if (collision.CompareTag("Trash"))
         {
+            QuestSystemPrototype.instance.SceneCheckWorld = true;
             EndGame();
         }
         if (collision.CompareTag("Fish"))
