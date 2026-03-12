@@ -31,6 +31,9 @@ public class PlayerHook : MonoBehaviour
     public float fishDecreaseAmount;
     float currentDurability;
 
+    [Header("GameObjects")]
+    public GameObject FishingUI;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -52,7 +55,7 @@ public class PlayerHook : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    void EndGame()
+    public void EndGame()
     {
         QuestSystemPrototype.instance.QuestComplete = true;
         SceneManager.LoadScene("MainWorld");
@@ -147,7 +150,8 @@ public class PlayerHook : MonoBehaviour
         if (collision.CompareTag("Trash"))
         {
             QuestSystemPrototype.instance.SceneCheckWorld = true;
-            EndGame();
+            //EndGame();
+            StartUI();
         }
         if (collision.CompareTag("Fish"))
         {
@@ -161,5 +165,16 @@ public class PlayerHook : MonoBehaviour
         {
             WallDurability();
         }
+    }
+
+    public void StartUI()
+    {
+        FishingUI.SetActive(true);
+        MinigameManager.instance.ChooseQuotes();
+    }
+
+    public void Restart()
+    {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

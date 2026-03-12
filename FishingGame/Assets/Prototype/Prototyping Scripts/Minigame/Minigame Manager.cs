@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class MinigameManager : MonoBehaviour
@@ -8,6 +9,10 @@ public class MinigameManager : MonoBehaviour
     public bool resetGame;
     public bool resetCamera;
 
+    public string[] FunFacts;
+
+    public TMP_Text RandomFunFact;
+
     private void Awake()
     {
         instance = this;
@@ -17,5 +22,11 @@ public class MinigameManager : MonoBehaviour
     {
         startGame = false;
         resetGame = false;
+    }
+
+    public void ChooseQuotes()
+    {
+        RandomFunFact.text = FunFacts[Random.Range(0, FunFacts.Length)];
+
     }
 }
