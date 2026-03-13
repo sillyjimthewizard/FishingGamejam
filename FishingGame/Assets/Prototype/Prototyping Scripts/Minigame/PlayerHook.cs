@@ -44,6 +44,8 @@ public class PlayerHook : MonoBehaviour
         startPos = transform.position;
         currentDurability = maxDurability;
         slider.maxValue = maxDurability;
+
+        QuestSystemPrototype.instance.QuestComplete = true;
     }
 
     private void Start()
@@ -60,8 +62,8 @@ public class PlayerHook : MonoBehaviour
 
     public void EndGame()
     {
-        QuestSystemPrototype.instance.QuestComplete = true;
         Time.timeScale = 1;
+        QuestSystemPrototype.instance.QuestComplete = true;
         SceneManager.LoadScene("MainWorld");
     }
 
