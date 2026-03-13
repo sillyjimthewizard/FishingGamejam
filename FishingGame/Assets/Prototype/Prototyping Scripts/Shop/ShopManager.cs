@@ -107,5 +107,10 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }
 
