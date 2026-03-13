@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestName: Forgotten History
   RewardAmount: 600
-  ObjectWanted: Founders Statue
+  ObjectWanted: Founder Statue
   Location: History District
   CustomerText: " A few years ago the statue of our town\u2019s founder was dropped
     into the ocean while it was on its way back from being repaired. We need it back
