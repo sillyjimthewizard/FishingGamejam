@@ -6,7 +6,7 @@ public class FishingSpots : MonoBehaviour
 
     public GameObject QuestSystem;
     public QuestSystemPrototype QuestSystemPrototype;
-
+    public float degreesPerSecond = 2f;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,6 +16,15 @@ public class FishingSpots : MonoBehaviour
         QuestSystemPrototype = QuestSystem.GetComponent<QuestSystemPrototype>();
         
     }
+    private void Update()
+    {
+        if (gameObject.name == QuestSystemPrototype.CurrentQuest.Location)
+        {
+            transform.Rotate(0, 0, degreesPerSecond * Time.deltaTime);
+        }
+    }
+    
+
 
     // Update is called once per frame
     void OnTriggerStay2D()
@@ -32,7 +41,7 @@ public class FishingSpots : MonoBehaviour
             
             Debug.Log("start fishing");
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MainWorld");
-            SceneManager.LoadScene("Tunnelling");
+            SceneManager.LoadScene(QuestSystemPrototype.CurrentQuest.ObjectWanted);
         }
 
         if (gameObject.name == "BackToShop" && Input.GetKeyDown("e"))

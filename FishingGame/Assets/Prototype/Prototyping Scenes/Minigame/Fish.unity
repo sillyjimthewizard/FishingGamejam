@@ -422,6 +422,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6643425753078292015, guid: 299564eaf7e3b9d43b8e534176744793, type: 3}
   m_PrefabInstance: {fileID: 1942566731827316218}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1367023259 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2187703488545714324, guid: 8f4ff8f6f37daab45885a89b0e65f6be, type: 3}
+  m_PrefabInstance: {fileID: 4266864207085032440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1487773196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4760599638255970700, guid: 8f4ff8f6f37daab45885a89b0e65f6be, type: 3}
@@ -899,6 +904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pufferfish Container
       objectReference: {fileID: 0}
+    - target: {fileID: 6577551587158492488, guid: 8f4ff8f6f37daab45885a89b0e65f6be, type: 3}
+      propertyPath: detectionZone
+      value: 
+      objectReference: {fileID: 1367023259}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
