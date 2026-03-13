@@ -142,7 +142,7 @@ public class PlayerHook : MonoBehaviour
 
     private void FishDurability()
     {
-        currentDurability -= fishDecreaseAmount * Time.deltaTime;
+        currentDurability -= fishDecreaseAmount;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -175,6 +175,6 @@ public class PlayerHook : MonoBehaviour
 
     public void Restart()
     {
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

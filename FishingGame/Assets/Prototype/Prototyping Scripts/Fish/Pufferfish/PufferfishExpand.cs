@@ -9,18 +9,11 @@ public class PufferfishExpand : MonoBehaviour
 
     public bool expand;
 
-    private Transform originalScale;
-
     private void Awake()
     {
         Instance = this;
 
         expand = false;
-    }
-
-    private void Start()
-    {
-        originalScale.transform.localScale = transform.localScale;
     }
 
     private void Update()
@@ -31,6 +24,7 @@ public class PufferfishExpand : MonoBehaviour
         }
         else
         {
+            StopCoroutine(ChargeExpand());
             transform.localScale = new(1, 1, 1);
         }
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6181405066549054976}
   m_Layer: 0
   m_Name: Swordfish
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00d1880b285de840bde3c71fa0eae70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 6
   pointA: {fileID: 427319519130979431}
   pointB: {fileID: 1451143985265368723}
 --- !u!61 &6181405066549054976
