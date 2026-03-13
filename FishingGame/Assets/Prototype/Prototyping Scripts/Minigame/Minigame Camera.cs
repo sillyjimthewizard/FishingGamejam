@@ -27,13 +27,6 @@ public class MinigameCamera : MonoBehaviour
         startCameraFollow = false;
     }
 
-    private void Update()
-    {
-        if (MinigameManager.instance.resetGame == true)
-        {
-            
-        }
-    }
 
     void FixedUpdate()
     {
