@@ -345,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestSystem: {fileID: 0}
   QuestSystemPrototype: {fileID: 0}
-  degreesPerSecond: 2
+  degreesPerSecond: 4
 --- !u!1 &168322228
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestSystem: {fileID: 0}
   QuestSystemPrototype: {fileID: 0}
-  degreesPerSecond: 2
+  degreesPerSecond: 4
 --- !u!1 &176142067
 GameObject:
   m_ObjectHideFlags: 0
@@ -8358,7 +8358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestSystem: {fileID: 0}
   QuestSystemPrototype: {fileID: 0}
-  degreesPerSecond: 2
+  degreesPerSecond: 4
 --- !u!58 &1013954083
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9103,7 +9103,7 @@ GameObject:
   - component: {fileID: 1178541963}
   - component: {fileID: 1178541964}
   m_Layer: 0
-  m_Name: Pop Culture  District
+  m_Name: Pop Culture District
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9229,7 +9229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestSystem: {fileID: 0}
   QuestSystemPrototype: {fileID: 0}
-  degreesPerSecond: 2
+  degreesPerSecond: 4
 --- !u!1001 &1283760871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11207,7 +11207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestSystem: {fileID: 0}
   QuestSystemPrototype: {fileID: 0}
-  degreesPerSecond: 2
+  degreesPerSecond: 4
 --- !u!1 &2026214896
 GameObject:
   m_ObjectHideFlags: 0
