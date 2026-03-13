@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Prototype/Prototyping Scenes/Minigame/Tunnelling.unity
     guid: a0c93ae7cc4b1f848ab3dbc426067db0
   - enabled: 1
-    path: Assets/Level Scenes/Founder Statue.unity
+    path: Assets/Level Scenes/Founders Statue.unity
     guid: 5565e80ffb560944c97498f70a9d7a5d
   - enabled: 1
     path: Assets/Level Scenes/Oil Barrel.unity
