@@ -61,6 +61,7 @@ public class PlayerHook : MonoBehaviour
     public void EndGame()
     {
         QuestSystemPrototype.instance.QuestComplete = true;
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainWorld");
     }
 
@@ -179,6 +180,7 @@ public class PlayerHook : MonoBehaviour
 
     public void StartUI()
     {
+        Time.timeScale = 0;
         FishingUI.SetActive(true);
         MinigameManager.instance.ChooseQuotes();
     }
