@@ -17,6 +17,6 @@ MonoBehaviour:
   ObjectWanted: Sewer Grate
   Location: Pop Culture District
   CustomerText: Im looking for this niche collectable which apparently ended up in
-    the ocean a few years ago around the Collectables District, can you have a look
+    the ocean a few years ago around the Pop Culture District, can you have a look
     for it for me
   QuestObjectSprite: {fileID: 0}
