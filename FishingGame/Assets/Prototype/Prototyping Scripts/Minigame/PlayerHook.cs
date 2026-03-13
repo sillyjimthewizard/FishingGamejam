@@ -36,6 +36,8 @@ public class PlayerHook : MonoBehaviour
     [Header("GameObjects")]
     public GameObject FishingUI;
 
+    public bool debug;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,8 +46,10 @@ public class PlayerHook : MonoBehaviour
         startPos = transform.position;
         currentDurability = maxDurability;
         slider.maxValue = maxDurability;
-
-        QuestSystemPrototype.instance.QuestComplete = true;
+        if (debug == false)
+        {
+            QuestSystemPrototype.instance.QuestComplete = true;
+        }
     }
 
     private void Start()

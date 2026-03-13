@@ -51,6 +51,7 @@ public class QuestSystemPrototype : MonoBehaviour
 
     public Vector3 PlayerPosition;
     public GameObject Player;
+    public GameObject EndScreen;
 
     //public bool questcomplete;
 
@@ -121,8 +122,8 @@ public class QuestSystemPrototype : MonoBehaviour
         //CurrencyText.text = RewardAmountTest.ToString();
         if (AmountOfQuestsCompleted >= 5)
         {
-            Debug.Log("game complet");
-
+            EndScreen.SetActive(true);
+            
         }
     }
 

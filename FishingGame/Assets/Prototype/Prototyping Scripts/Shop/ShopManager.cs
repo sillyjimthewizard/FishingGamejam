@@ -99,9 +99,17 @@ public class ShopManager : MonoBehaviour
 
     public void SceneSwapper()
     {
-       // SceneManager.UnloadSceneAsync("TheShop");
-        SceneManager.LoadScene("MainWorld");
-        //QuestSystemPrototype.instance.SceneCheck = true;
+        if (QuestSystemPrototype.instance.CurrentQuest != null)
+        {
+            // SceneManager.UnloadSceneAsync("TheShop");
+            SceneManager.LoadScene("MainWorld");
+            //QuestSystemPrototype.instance.SceneCheck = true;
+        }
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
 }
