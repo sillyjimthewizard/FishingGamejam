@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerHook : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class PlayerHook : MonoBehaviour
     public float maxDurability;
     public float wallDecreaseAmount;
     public float fishDecreaseAmount;
+    public Slider slider;
     float currentDurability;
 
     [Header("GameObjects")]
@@ -41,6 +43,7 @@ public class PlayerHook : MonoBehaviour
 
         startPos = transform.position;
         currentDurability = maxDurability;
+        slider.maxValue = maxDurability;
     }
 
     private void Start()
@@ -133,6 +136,13 @@ public class PlayerHook : MonoBehaviour
             currentDurability = 0;
             StartCoroutine(PlayerDeath());
         }
+
+        DurabilityBar();
+    }
+
+    private void DurabilityBar()
+    {
+        slider.value = currentDurability;
     }
 
     private void WallDurability()

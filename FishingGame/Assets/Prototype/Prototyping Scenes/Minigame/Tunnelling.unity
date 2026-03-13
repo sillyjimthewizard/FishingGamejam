@@ -2607,17 +2607,21 @@ PrefabInstance:
       propertyPath: startGameText
       value: 
       objectReference: {fileID: 556861222}
-    - target: {fileID: 1339483294973733695, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
-      propertyPath: fishDecreaseAmount
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 2463611806757740728, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
       propertyPath: m_Name
       value: --- Hook ---
       objectReference: {fileID: 0}
-    - target: {fileID: 2463611806757740728, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
-      propertyPath: m_TagString
-      value: Player
+    - target: {fileID: 4012172385005567775, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.31897926
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012172385005567775, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4411375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988902694517542261, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9143200788759147527, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
       propertyPath: m_LocalPosition.x
