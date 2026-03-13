@@ -20,6 +20,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prototype/Prototyping Scenes/Minigame/Tunnelling.unity
     guid: a0c93ae7cc4b1f848ab3dbc426067db0
+  - enabled: 1
+    path: Assets/Level Scenes/Founder Statue.unity
+    guid: 5565e80ffb560944c97498f70a9d7a5d
+  - enabled: 1
+    path: Assets/Level Scenes/Oil Barrel.unity
+    guid: 3aab4be3f51b81b449246de26e3a4f2e
+  - enabled: 1
+    path: Assets/Level Scenes/Secret Formula.unity
+    guid: aa9748e84f713d54686064389de64966
+  - enabled: 1
+    path: Assets/Level Scenes/Sewer Grate.unity
+    guid: bb45ba6f0f76690409c75a38ae0891ed
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

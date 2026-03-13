@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestName: Niche Collectables
   RewardAmount: 200
-  ObjectWanted: Silly Jim Sewer Grate
+  ObjectWanted: Sewer Grate
   Location: Collectables District
   CustomerText: Im looking for this niche collectable which apparently ended up in
     the ocean a few years ago around the Collectables District, can you have a look
