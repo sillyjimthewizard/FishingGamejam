@@ -154,6 +154,8 @@ public class QuestSystemPrototype : MonoBehaviour
             ShopManager.instance.RandomiseCustomer();
             MasterQuestSystem = true;
             RewardAmountTest += CurrentQuest.RewardAmount;
+
+        return;
             
 
            /* if (firstQuest == false)
@@ -173,23 +175,10 @@ public class QuestSystemPrototype : MonoBehaviour
         
     }
 
-   
-
-    public void TrashQuestObject()
-    {
-
-        QuestComplete = true;
-
-    }
-
     public void SetQuestSpots()
     {
         debug = CurrentQuest.Location.ToString();
         CurrentQuestSpot = GameObject.Find(CurrentQuest.Location.ToString());
 
     }
-
-
-
-
 }
