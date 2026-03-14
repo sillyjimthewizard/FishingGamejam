@@ -37,6 +37,7 @@ public class QuestSystemPrototype : MonoBehaviour
     public bool SceneCheckWorld;
     public bool firstQuest;
     public bool SceneCheckShop;
+    public bool SceneCheckMinigame;
 
     [Header("GameObjects")]
     public GameObject CurrentQuestSpot;
@@ -133,11 +134,21 @@ public class QuestSystemPrototype : MonoBehaviour
                 // Debug.Log(CurrencyText.text);
             }
          }
-        
-       // CurrencyObject = GameObject.Find("DND_UI/Currency");
-        //CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
-        //CurrencyText.text = RewardAmountTest.ToString();
-        if (AmountOfQuestsCompleted >= 5)
+
+        if (SceneManager.GetActiveScene().name != "MainWorld" && SceneManager.GetActiveScene().name != "TheShop" && SceneManager.GetActiveScene().name != "Main Menu")
+        {
+            if (SceneCheckMinigame == true) 
+                {
+                QuestComplete = true;
+                SceneCheckMinigame = false;
+                SceneCheckWorld = true;
+            
+            }
+        }
+            // CurrencyObject = GameObject.Find("DND_UI/Currency");
+            //CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
+            //CurrencyText.text = RewardAmountTest.ToString();
+            if (AmountOfQuestsCompleted >= 4)
         {
             EndScreen.SetActive(true);
             
@@ -167,7 +178,7 @@ public class QuestSystemPrototype : MonoBehaviour
             ShopManager.instance.RandomiseCustomer();
             MasterQuestSystem = true;
             RewardAmountTest += CurrentQuest.RewardAmount;
-
+            SceneCheckMinigame = true;
 
     }
 
@@ -177,4 +188,6 @@ public class QuestSystemPrototype : MonoBehaviour
         CurrentQuestSpot = GameObject.Find(CurrentQuest.Location.ToString());
 
     }
+
+    
 }
