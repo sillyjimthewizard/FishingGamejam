@@ -36,6 +36,7 @@ public class PlayerHook : MonoBehaviour
     [Header("GameObjects")]
     public GameObject FishingUI;
 
+
     public bool debug;
 
     private void Awake()
@@ -49,6 +50,8 @@ public class PlayerHook : MonoBehaviour
         if (debug == false)
         {
             QuestSystemPrototype.instance.QuestComplete = true;
+            QuestSystemPrototype.instance.SceneCheckWorld = true;
+
         }
     }
 
@@ -68,6 +71,9 @@ public class PlayerHook : MonoBehaviour
     {
         Time.timeScale = 1;
         QuestSystemPrototype.instance.QuestComplete = true;
+        Debug.Log(QuestSystemPrototype.instance.QuestComplete);
+        QuestSystemPrototype.instance.SceneCheckWorld = true;
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.LoadScene("MainWorld");
     }
 
@@ -166,7 +172,6 @@ public class PlayerHook : MonoBehaviour
     {
         if (collision.CompareTag("Trash"))
         {
-            QuestSystemPrototype.instance.SceneCheckWorld = true;
             //EndGame();
             StartUI();
         }
