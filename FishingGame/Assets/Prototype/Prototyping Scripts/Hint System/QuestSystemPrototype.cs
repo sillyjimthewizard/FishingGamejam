@@ -150,7 +150,8 @@ public class QuestSystemPrototype : MonoBehaviour
             //CurrencyText.text = RewardAmountTest.ToString();
             if (AmountOfQuestsCompleted >= 4)
         {
-            EndScreen.SetActive(true);
+            ShopManager.instance.ShowWin();
+            CustomerDialogueObject.SetActive(false);
             
         }
     }

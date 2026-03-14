@@ -1070,6 +1070,7 @@ MonoBehaviour:
   PlayerStatsObject: {fileID: 0}
   QuestSystem: {fileID: 0}
   QuestScript: {fileID: 0}
+  WinScreen: {fileID: 1797339837}
 --- !u!1 &606948200
 GameObject:
   m_ObjectHideFlags: 0

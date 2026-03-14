@@ -31,6 +31,7 @@ public class ShopManager : MonoBehaviour
     public GameObject QuestSystem;
     public QuestSystemPrototype QuestScript;
 
+    public GameObject WinScreen;
 
     private void Awake()
     {
@@ -114,6 +115,12 @@ public class ShopManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowWin()
+    {
+        WinScreen.SetActive(true);
+
     }
 
 }
