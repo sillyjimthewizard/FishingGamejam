@@ -63,19 +63,20 @@ public class FishingSpots : MonoBehaviour
             tooltip.enabled = true;
 
             Debug.Log("Player Found");
-            if (Input.GetKeyDown(KeyCode.E) && this.gameObject.name == QuestSystemPrototype.CurrentQuest.Location && QuestSystemPrototype.QuestComplete == false)
+            if (Input.GetKey(KeyCode.E) && this.gameObject.name == QuestSystemPrototype.CurrentQuest.Location && QuestSystemPrototype.QuestComplete == false)
             {
                 QuestSystemPrototype.PlayerPosition = this.transform.position;
 
                 Debug.Log("start fishing");
-                // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MainWorld");
+                SceneManager.UnloadSceneAsync("MainWorld");
                 SceneManager.LoadScene(QuestSystemPrototype.CurrentQuest.ObjectWanted);
             }
-            else if (this.gameObject.name == "BackToShop" && Input.GetKeyDown(KeyCode.E))
+            else if (this.gameObject.name == "BackToShop" && Input.GetKey(KeyCode.E))
             {
                 QuestSystemPrototype.PlayerPosition = this.transform.position;
                 // QuestSystemPrototype.instance.StartCoroutine(RefreshTimer());
                 // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("MainWorld");
+                SceneManager.UnloadSceneAsync("MainWorld");
                 SceneManager.LoadScene("TheShop");
 
             }

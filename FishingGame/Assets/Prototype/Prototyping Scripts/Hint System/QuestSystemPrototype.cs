@@ -149,12 +149,7 @@ public class QuestSystemPrototype : MonoBehaviour
         
         
         Debug.Log("finding");
-       // LocationObject = GameObject.Find("DND_UI/Location");
-       // LocationText = LocationObject.GetComponent<TMP_Text>();
-       // QuestObject = GameObject.Find("DND_UI/QuestName");
-       // QuestText = QuestObject.GetComponent<TMP_Text>();
-       // RewardObject = GameObject.Find("DND_UI/RewardAmount");
-       // RewardText = RewardObject.GetComponent<TMP_Text>();
+     
         CustomerDialogueObject = GameObject.Find("DND_UI/Dialogue");
         CustomerDialogue = CustomerDialogueObject.GetComponent<TMP_Text>();
 
@@ -173,24 +168,7 @@ public class QuestSystemPrototype : MonoBehaviour
             MasterQuestSystem = true;
             RewardAmountTest += CurrentQuest.RewardAmount;
 
-        return;
-            
 
-           /* if (firstQuest == false)
-            {
-                CurrencyObject = GameObject.Find("Currency");
-                CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
-                CurrencyText.text = "Currency:  " + Mathf.RoundToInt(RewardAmountTest).ToString();
-            }
-            if (firstQuest == true && RewardAmountTest == 0) {
-                CurrencyObject = GameObject.Find("Currency");
-                CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
-                CurrencyText.text = "Currency: 0";
-
-                }
-            firstQuest = false;
-           */
-        
     }
 
     public void SetQuestSpots()
