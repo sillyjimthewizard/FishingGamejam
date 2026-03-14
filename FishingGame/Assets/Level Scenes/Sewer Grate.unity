@@ -920,6 +920,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 498062249}
     m_Modifications:
+    - target: {fileID: 335639199930545052, guid: 9f0fb1a730c8b344482925dd24d45b43, type: 3}
+      propertyPath: m_margin.w
+      value: -116.85193
+      objectReference: {fileID: 0}
     - target: {fileID: 673571819201120706, guid: 9f0fb1a730c8b344482925dd24d45b43, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1049,7 +1053,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: f47a5d707fcf0334399d572b6e0391b6, type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5778350863074190851, guid: 9f0fb1a730c8b344482925dd24d45b43, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6555621359330504594, guid: 9f0fb1a730c8b344482925dd24d45b43, type: 3}
       insertIndex: -1
@@ -1753,8 +1758,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
