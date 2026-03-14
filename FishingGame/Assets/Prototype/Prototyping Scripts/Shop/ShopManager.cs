@@ -28,6 +28,9 @@ public class ShopManager : MonoBehaviour
     public PlayerStats TempPlayerStats;
     public GameObject PlayerStatsObject;
 
+    public GameObject QuestSystem;
+    public QuestSystemPrototype QuestScript;
+
 
     private void Awake()
     {
@@ -54,7 +57,8 @@ public class ShopManager : MonoBehaviour
 
     public void Start()
     {
-       
+        QuestSystem = GameObject.Find("QuestManager");
+        QuestScript = QuestSystem.GetComponent<QuestSystemPrototype>();
     }
 
     // Update is called once per frame
@@ -99,7 +103,7 @@ public class ShopManager : MonoBehaviour
 
     public void SceneSwapper()
     {
-        if (QuestSystemPrototype.instance.CurrentQuest != null)
+        if (QuestScript.CurrentQuest != null)
         {
             // SceneManager.UnloadSceneAsync("TheShop");
             SceneManager.LoadScene("MainWorld");

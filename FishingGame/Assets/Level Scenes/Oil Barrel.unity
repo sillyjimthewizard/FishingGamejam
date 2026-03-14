@@ -958,7 +958,7 @@ PrefabInstance:
     - target: {fileID: 3746846682429538007, guid: 2097ef6868e63b64796ac092a1c1775a, type: 3}
       propertyPath: RandomFunFact
       value: 
-      objectReference: {fileID: 1926566450}
+      objectReference: {fileID: 6687989611936214027}
     - target: {fileID: 5138912428231624111, guid: 2097ef6868e63b64796ac092a1c1775a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3498,6 +3498,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5175999881388592372, guid: 9f0fb1a730c8b344482925dd24d45b43, type: 3}
   m_PrefabInstance: {fileID: 6687989611936214024}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6687989611936214027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 335639199930545052, guid: 9f0fb1a730c8b344482925dd24d45b43, type: 3}
+  m_PrefabInstance: {fileID: 6687989611936214024}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
