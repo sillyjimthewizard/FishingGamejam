@@ -3,16 +3,12 @@ using UnityEngine;
 
 public class PufferfishExpand : MonoBehaviour
 {
-    public static PufferfishExpand Instance;
-
     public Transform detectionZone;
 
     public bool expand;
 
     private void Awake()
     {
-        Instance = this;
-
         expand = false;
     }
 

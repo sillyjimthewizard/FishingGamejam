@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23622122321be384c8651a8e9a6131f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pufferfishMainScript: {fileID: 6577551587158492488}
 --- !u!58 &1307253722409113756
 CircleCollider2D:
   m_ObjectHideFlags: 0
