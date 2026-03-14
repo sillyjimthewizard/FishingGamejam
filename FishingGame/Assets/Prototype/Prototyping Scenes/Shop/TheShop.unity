@@ -1202,8 +1202,8 @@ MonoBehaviour:
   TorsoCustomerSprite: {fileID: 0}
   FaceCustomerSprite: {fileID: 0}
   RewardAmountTest: 0
-  AmountOfQuestsCompleted: 0
-  PlayerPosition: {x: 0, y: 0, z: 0}
+  AmountOfQuestsCompleted: -1
+  PlayerPosition: {x: -55.75, y: 49.35, z: 0}
   Player: {fileID: 0}
   EndScreen: {fileID: 1797339837}
 --- !u!4 &629478100

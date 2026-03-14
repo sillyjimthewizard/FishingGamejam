@@ -17,5 +17,5 @@ MonoBehaviour:
   ObjectWanted: Oil Barrel
   Location: Factory District
   CustomerText: My oil shipment is missing an oil barrel, please find it for me.
-    The only place I think it could be is the Factory District
+    The only place I think it could be is in the Factory District
   QuestObjectSprite: {fileID: 21300000, guid: 9f07f65748163814592eaef68d21a1ed, type: 3}

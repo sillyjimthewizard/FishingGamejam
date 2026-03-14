@@ -73,12 +73,12 @@ public class ShopManager : MonoBehaviour
 
         }
 
-        if (QuestSystemPrototype.instance.QuestComplete == true)
+        if (QuestScript.QuestComplete == true)
         {
             QuestItemCounter.color = new Color(1, 1, 0);
         }
 
-        if (QuestSystemPrototype.instance.QuestComplete == false)
+        if (QuestScript.QuestComplete == false)
         {
             QuestItemCounter.color = new Color(1, 1, 1);
         }
