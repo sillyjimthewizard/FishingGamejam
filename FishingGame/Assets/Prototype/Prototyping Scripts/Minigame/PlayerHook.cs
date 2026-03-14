@@ -73,6 +73,7 @@ public class PlayerHook : MonoBehaviour
         QuestSystemPrototype.instance.QuestComplete = true;
         Debug.Log(QuestSystemPrototype.instance.QuestComplete);
         QuestSystemPrototype.instance.SceneCheckWorld = true;
+        
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.LoadScene("MainWorld");
     }
