@@ -25,6 +25,9 @@ public class QuestSystemPrototype : MonoBehaviour
     public TMP_Text CurrencyText;
     public GameObject CurrencyObject;
 
+    public GameObject LocationTracker;
+    public TMP_Text LocationTrackerTXT;
+
     [Header("Bools")]
     public bool QuestComplete;
     public bool QuestRecieved;
@@ -34,10 +37,12 @@ public class QuestSystemPrototype : MonoBehaviour
     public bool SceneCheckWorld;
     public bool firstQuest;
     public bool SceneCheckShop;
+    public bool SceneCheckMinigame;
 
     [Header("GameObjects")]
     public GameObject CurrentQuestSpot;
     public GameObject DND_UI;
+    
     public Canvas DND_UICanvas;
 
     [Header("Sprites")]
@@ -97,8 +102,21 @@ public class QuestSystemPrototype : MonoBehaviour
                 DND_UICanvas = DND_UI.GetComponent<Canvas>();
                 DND_UICanvas.enabled = false;
                 SceneCheckShop = true;
-                SceneCheckWorld = false;
+                
+               
+                LocationTracker = GameObject.Find("LocationTracker");
+                LocationTrackerTXT = LocationTracker.GetComponent<TMP_Text>();
+                if (QuestComplete == false)
+                {
+                    LocationTrackerTXT.text = "Go To: " + CurrentQuest.Location.ToString();
+                }
+                else if (QuestComplete == true)
+                {
+                    LocationTrackerTXT.text = "Go To: The Shop!";
+                }
 
+
+                    SceneCheckWorld = false;
             }
         }
 
@@ -112,15 +130,25 @@ public class QuestSystemPrototype : MonoBehaviour
                  DND_UI.SetActive(true);
                  SceneCheckWorld = true;
                  SceneCheckShop = false;
-                 //Debug.Log(CurrentQuest.RewardAmount);
-                 // Debug.Log(CurrencyText.text);
-             }
+                //Debug.Log(CurrentQuest.RewardAmount);
+                // Debug.Log(CurrencyText.text);
+            }
          }
-        
-       // CurrencyObject = GameObject.Find("DND_UI/Currency");
-        //CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
-        //CurrencyText.text = RewardAmountTest.ToString();
-        if (AmountOfQuestsCompleted >= 5)
+
+        if (SceneManager.GetActiveScene().name != "MainWorld" && SceneManager.GetActiveScene().name != "TheShop" && SceneManager.GetActiveScene().name != "Main Menu")
+        {
+            if (SceneCheckMinigame == true) 
+                {
+                QuestComplete = true;
+                SceneCheckMinigame = false;
+                SceneCheckWorld = true;
+            
+            }
+        }
+            // CurrencyObject = GameObject.Find("DND_UI/Currency");
+            //CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
+            //CurrencyText.text = RewardAmountTest.ToString();
+            if (AmountOfQuestsCompleted >= 4)
         {
             EndScreen.SetActive(true);
             
@@ -132,12 +160,7 @@ public class QuestSystemPrototype : MonoBehaviour
         
         
         Debug.Log("finding");
-       // LocationObject = GameObject.Find("DND_UI/Location");
-       // LocationText = LocationObject.GetComponent<TMP_Text>();
-       // QuestObject = GameObject.Find("DND_UI/QuestName");
-       // QuestText = QuestObject.GetComponent<TMP_Text>();
-       // RewardObject = GameObject.Find("DND_UI/RewardAmount");
-       // RewardText = RewardObject.GetComponent<TMP_Text>();
+     
         CustomerDialogueObject = GameObject.Find("DND_UI/Dialogue");
         CustomerDialogue = CustomerDialogueObject.GetComponent<TMP_Text>();
 
@@ -155,25 +178,8 @@ public class QuestSystemPrototype : MonoBehaviour
             ShopManager.instance.RandomiseCustomer();
             MasterQuestSystem = true;
             RewardAmountTest += CurrentQuest.RewardAmount;
+            SceneCheckMinigame = true;
 
-        return;
-            
-
-           /* if (firstQuest == false)
-            {
-                CurrencyObject = GameObject.Find("Currency");
-                CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
-                CurrencyText.text = "Currency:  " + Mathf.RoundToInt(RewardAmountTest).ToString();
-            }
-            if (firstQuest == true && RewardAmountTest == 0) {
-                CurrencyObject = GameObject.Find("Currency");
-                CurrencyText = CurrencyObject.GetComponent<TMP_Text>();
-                CurrencyText.text = "Currency: 0";
-
-                }
-            firstQuest = false;
-           */
-        
     }
 
     public void SetQuestSpots()
@@ -182,4 +188,6 @@ public class QuestSystemPrototype : MonoBehaviour
         CurrentQuestSpot = GameObject.Find(CurrentQuest.Location.ToString());
 
     }
+
+    
 }
