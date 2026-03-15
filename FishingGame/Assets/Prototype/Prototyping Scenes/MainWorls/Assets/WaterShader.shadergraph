@@ -239,20 +239,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "0ed9ed164ec241b3876275fd5022f6e8"
-                },
-                "m_SlotId": 4
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "bcff95d52f64468ebf7192e783a4f60a"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "101e989881504ee0bd73652d66b5089e"
                 },
                 "m_SlotId": 0
@@ -1084,8 +1070,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2574.0,
-            "y": 1035.0001220703125,
+            "x": -2573.999755859375,
+            "y": 931.0,
             "width": 208.0,
             "height": 350.0
         }
@@ -2267,7 +2253,7 @@
     "m_Title": "Transparency",
     "m_Position": {
         "x": -1281.0,
-        "y": 1190.9998779296875
+        "y": 1191.0
     }
 }
 
@@ -4302,8 +4288,8 @@
     "m_ObjectId": "9e3d443738ad4c759197f7f5e2f49d70",
     "m_Title": "Foam",
     "m_Position": {
-        "x": -2042.9998779296875,
-        "y": 1929.9998779296875
+        "x": -2043.0,
+        "y": 1930.0
     }
 }
 
@@ -5368,7 +5354,7 @@
     "m_Title": "Color",
     "m_Position": {
         "x": -1484.0,
-        "y": 1563.9998779296875
+        "y": 1564.0
     }
 }
 

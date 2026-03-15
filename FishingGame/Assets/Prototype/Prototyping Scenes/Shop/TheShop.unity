@@ -1070,6 +1070,7 @@ MonoBehaviour:
   PlayerStatsObject: {fileID: 0}
   QuestSystem: {fileID: 0}
   QuestScript: {fileID: 0}
+  WinScreen: {fileID: 1797339837}
 --- !u!1 &606948200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,8 +1202,8 @@ MonoBehaviour:
   TorsoCustomerSprite: {fileID: 0}
   FaceCustomerSprite: {fileID: 0}
   RewardAmountTest: 0
-  AmountOfQuestsCompleted: 0
-  PlayerPosition: {x: 0, y: 0, z: 0}
+  AmountOfQuestsCompleted: -1
+  PlayerPosition: {x: -55.75, y: 49.35, z: 0}
   Player: {fileID: 0}
   EndScreen: {fileID: 1797339837}
 --- !u!4 &629478100

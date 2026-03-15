@@ -31,6 +31,7 @@ public class ShopManager : MonoBehaviour
     public GameObject QuestSystem;
     public QuestSystemPrototype QuestScript;
 
+    public GameObject WinScreen;
 
     private void Awake()
     {
@@ -72,12 +73,12 @@ public class ShopManager : MonoBehaviour
 
         }
 
-        if (QuestSystemPrototype.instance.QuestComplete == true)
+        if (QuestScript.QuestComplete == true)
         {
             QuestItemCounter.color = new Color(1, 1, 0);
         }
 
-        if (QuestSystemPrototype.instance.QuestComplete == false)
+        if (QuestScript.QuestComplete == false)
         {
             QuestItemCounter.color = new Color(1, 1, 1);
         }
@@ -114,6 +115,12 @@ public class ShopManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowWin()
+    {
+        WinScreen.SetActive(true);
+
     }
 
 }
