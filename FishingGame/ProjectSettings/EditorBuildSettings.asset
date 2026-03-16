@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Prototype/Prototyping Scenes/Main Menu/Main Menu.unity
+    guid: 18d8f5b17d46bca4aa00dde1e5b79c1c
+  - enabled: 1
     path: Assets/Prototype/Prototyping Scenes/Shop/TheShop.unity
     guid: fe4cb4c563157e1498f4691abdc735ae
   - enabled: 0
@@ -17,21 +20,33 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Prototype/Prototyping Scenes/Minigame/Tunnelling.unity
     guid: a0c93ae7cc4b1f848ab3dbc426067db0
-  - enabled: 1
-    path: Assets/Scenes/Level Scenes/Founders Statue.unity
+  - enabled: 0
+    path: Assets/Scenes/Level Scenes/Founders Statue1.unity
     guid: 5565e80ffb560944c97498f70a9d7a5d
-  - enabled: 1
-    path: Assets/Scenes/Level Scenes/Oil Barrel.unity
+  - enabled: 0
+    path: Assets/Scenes/Level Scenes/Oil Barrel1.unity
     guid: 3aab4be3f51b81b449246de26e3a4f2e
-  - enabled: 1
-    path: Assets/Scenes/Level Scenes/Secret Formula.unity
+  - enabled: 0
+    path: Assets/Scenes/Level Scenes/Secret Formula1.unity
     guid: aa9748e84f713d54686064389de64966
-  - enabled: 1
-    path: Assets/Scenes/Level Scenes/Sewer Grate.unity
+  - enabled: 0
+    path: Assets/Scenes/Level Scenes/Sewer Grate1.unity
     guid: bb45ba6f0f76690409c75a38ae0891ed
   - enabled: 1
     path: Assets/Scenes/Main World/MainWorld.unity
     guid: 5fa7bf777b6d4be4cbabf2728c3a87fd
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Mark Blockouts/Sewer Grate.unity
+    guid: c9a23335347952640b6924f0a562df26
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Mark Blockouts/Secret Formula.unity
+    guid: 31bf4fe5985b67f49b445585396cde8a
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Mark Blockouts/Oil Barrel.unity
+    guid: b4f5a4320563bbb4389c469657483a4d
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Mark Blockouts/Founders Statue.unity
+    guid: cf1f4c63107902e4ab5ba41bccc1c00c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

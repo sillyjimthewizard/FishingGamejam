@@ -304,6 +304,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 636147326}
     m_Modifications:
     - target: {fileID: 2540753707434055491, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540753707434055491, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540753707434055491, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540753707434055491, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540753707434055491, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -330,6 +346,14 @@ PrefabInstance:
     - target: {fileID: 2540753707434055491, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292443227897348064, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292443227897348064, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5588064701419466537, guid: 82280d4341f8cc945aad8b175ba1532d, type: 3}
       propertyPath: m_Pivot.x

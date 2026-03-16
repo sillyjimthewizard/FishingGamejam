@@ -8,12 +8,13 @@ public class SquidDetection : MonoBehaviour
 
     private void Awake()
     {
-        squidInk.SetActive(false);
+        //squidInk.SetActive(false);
     }
 
     private void Start()
     {
-        MainCamera = GameObject.Find("Main Camera (1)");
+        MainCamera = GameObject.Find("MainCamera");
+        squidInk = Resources.Load<GameObject>("SquidInk/Ink");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,9 +27,10 @@ public class SquidDetection : MonoBehaviour
 
     IEnumerator SquidInterference()
     {
-        Instantiate(squidInk, new Vector3 (MainCamera.transform.position.x, MainCamera.transform.position.y, 0), Quaternion.identity);
+        GameObject Squidink2 = Instantiate(squidInk, new Vector3 (MainCamera.transform.position.x, MainCamera.transform.position.y, 1), Quaternion.identity);
+        Squidink2.transform.SetParent(MainCamera.transform);
         yield return new WaitForSeconds(1.25f);
-        squidInk.SetActive(false);
+        Destroy(Squidink2);
         yield break;
     }
 }
