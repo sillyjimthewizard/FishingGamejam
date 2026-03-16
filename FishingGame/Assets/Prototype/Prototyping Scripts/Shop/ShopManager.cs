@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-
+    [Header("Sprites")]
     public Sprite[] TorsoImages;
     public Sprite[] HeadImages;
     public Sprite[] FaceImages;
@@ -23,6 +23,7 @@ public class ShopManager : MonoBehaviour
     public SpriteRenderer FaceRenderer;
     public SpriteRenderer BodyRenderer;
 
+    [Header("Non Sprites")]
     public static ShopManager instance;
 
     public PlayerStats TempPlayerStats;
@@ -32,6 +33,8 @@ public class ShopManager : MonoBehaviour
     public QuestSystemPrototype QuestScript;
 
     public GameObject WinScreen;
+
+    public AudioClip ButtonSound;
 
     private void Awake()
     {
@@ -107,6 +110,7 @@ public class ShopManager : MonoBehaviour
         if (QuestScript.CurrentQuest != null)
         {
             // SceneManager.UnloadSceneAsync("TheShop");
+            S_SoundManager.instance.PlaySound(ButtonSound, 0.2f);
             SceneManager.LoadScene("MainWorld");
             //QuestSystemPrototype.instance.SceneCheck = true;
         }

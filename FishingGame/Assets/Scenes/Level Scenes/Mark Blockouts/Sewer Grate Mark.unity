@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Squid Container
       objectReference: {fileID: 0}
+    - target: {fileID: 1282551757344586058, guid: 299564eaf7e3b9d43b8e534176744793, type: 3}
+      propertyPath: squidInk
+      value: 
+      objectReference: {fileID: 217567078}
     - target: {fileID: 6643425753078292015, guid: 299564eaf7e3b9d43b8e534176744793, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3094
@@ -520,6 +524,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f89258231b13932479e10bb9336210ef, type: 3}
+--- !u!1 &217567078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7822826517652294446, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
+  m_PrefabInstance: {fileID: 2035845631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &219579011
 GameObject:
   m_ObjectHideFlags: 0
@@ -4036,6 +4045,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1339483294973733695, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339483294973733695, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
       propertyPath: FishingUI
       value: 
       objectReference: {fileID: 1052439147}
@@ -4049,6 +4062,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988902694517542261, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822826517652294446, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9143200788759147527, guid: 510404faa43a9eb4981f019f2e980fd8, type: 3}

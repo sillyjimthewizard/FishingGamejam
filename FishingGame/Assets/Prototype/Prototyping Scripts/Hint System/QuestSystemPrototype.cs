@@ -28,6 +28,9 @@ public class QuestSystemPrototype : MonoBehaviour
     public GameObject LocationTracker;
     public TMP_Text LocationTrackerTXT;
 
+    public GameObject QuestAmountTracker;
+    public TMP_Text QuestAmountTrackerText;
+
     [Header("Bools")]
     public bool QuestComplete;
     public bool QuestRecieved;
@@ -57,6 +60,9 @@ public class QuestSystemPrototype : MonoBehaviour
     public Vector3 PlayerPosition;
     public GameObject Player;
     public GameObject EndScreen;
+
+    public AudioClip ShopMusic;
+    public AudioClip WorldMusic;
 
     //public bool questcomplete;
 
@@ -102,7 +108,7 @@ public class QuestSystemPrototype : MonoBehaviour
                 DND_UICanvas = DND_UI.GetComponent<Canvas>();
                 DND_UICanvas.enabled = false;
                 SceneCheckShop = true;
-                
+                S_SoundManager.instance.PlayMusic(WorldMusic, 0.02f);
                
                 LocationTracker = GameObject.Find("LocationTracker");
                 LocationTrackerTXT = LocationTracker.GetComponent<TMP_Text>();
@@ -124,12 +130,16 @@ public class QuestSystemPrototype : MonoBehaviour
          {
              if (SceneCheckShop == true)
              {
-                 DND_UI = GameObject.Find("DND_UI");
+                S_SoundManager.instance.PlayMusic(ShopMusic,0.02f);
+
+
+                DND_UI = GameObject.Find("DND_UI");
                  DND_UICanvas = DND_UI.GetComponent<Canvas>();
                  DND_UICanvas.enabled = true;
                  DND_UI.SetActive(true);
                  SceneCheckWorld = true;
                  SceneCheckShop = false;
+                
                 //Debug.Log(CurrentQuest.RewardAmount);
                 // Debug.Log(CurrencyText.text);
             }
@@ -139,6 +149,7 @@ public class QuestSystemPrototype : MonoBehaviour
         {
             if (SceneCheckMinigame == true) 
                 {
+                S_SoundManager.instance.PlayMusic(WorldMusic, 0.02f);
                 QuestComplete = true;
                 SceneCheckMinigame = false;
                 SceneCheckWorld = true;
@@ -165,8 +176,10 @@ public class QuestSystemPrototype : MonoBehaviour
         CustomerDialogueObject = GameObject.Find("DND_UI/Dialogue");
         CustomerDialogue = CustomerDialogueObject.GetComponent<TMP_Text>();
 
-        
-            AmountOfQuestsCompleted++;
+        QuestAmountTracker = GameObject.Find("QuestCounter");
+        QuestAmountTrackerText = QuestAmountTracker.GetComponent<TMP_Text>();
+
+        AmountOfQuestsCompleted++;
             Quests = Resources.LoadAll<QuestScriptables>("Quests");
             
             CurrentQuest = Quests[Random.Range(0, Quests.Length)];
@@ -180,6 +193,7 @@ public class QuestSystemPrototype : MonoBehaviour
             MasterQuestSystem = true;
             RewardAmountTest += CurrentQuest.RewardAmount;
             SceneCheckMinigame = true;
+            QuestAmountTrackerText.text ="Quests Completed: " + AmountOfQuestsCompleted.ToString();
 
     }
 

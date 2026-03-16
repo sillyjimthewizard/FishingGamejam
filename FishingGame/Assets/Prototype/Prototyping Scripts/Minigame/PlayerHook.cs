@@ -36,6 +36,9 @@ public class PlayerHook : MonoBehaviour
     [Header("GameObjects")]
     public GameObject FishingUI;
 
+    [Header("Audio")]
+    public AudioClip HookSound;
+
 
     public bool debug;
 
@@ -58,13 +61,16 @@ public class PlayerHook : MonoBehaviour
     private void Start()
     {
         startGameText.enabled = true;
+        HookSound = Resources.Load<AudioClip>("Audio2/Hook");
     }
 
     IEnumerator PlayerDeath()
     {
         animator.SetTrigger("Death");
+        S_SoundManager.instance.PlaySound(HookSound, 0.4f);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield break;
     }
 
     public void EndGame()
