@@ -41,6 +41,7 @@ public class PlayerHook : MonoBehaviour
 
 
     public bool debug;
+    public bool audioCheck;
 
     private void Awake()
     {
@@ -62,13 +63,19 @@ public class PlayerHook : MonoBehaviour
     {
         startGameText.enabled = true;
         HookSound = Resources.Load<AudioClip>("Audio2/Hook");
+        audioCheck = true;
     }
 
     IEnumerator PlayerDeath()
     {
         animator.SetTrigger("Death");
-        S_SoundManager.instance.PlaySound(HookSound, 0.4f);
+        
         yield return new WaitForSeconds(1.5f);
+        if (audioCheck == true)
+        {
+            S_SoundManager.instance.PlaySound(HookSound, 0.4f);
+            audioCheck = false;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         yield break;
     }
